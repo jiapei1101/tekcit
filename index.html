@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,15 +11,16 @@
         <h1>歡迎來到演唱會購票系統</h1>
     </header>
     <main>
-        <section>
-            <h2>選擇演唱會</h2>
-            <ul>
-                <li>演唱會 A - 2024/10/25</li>
-                <li>演唱會 B - 2024/11/05</li>
-                <li>演唱會 C - 2024/12/10</li>
-            </ul>
-        </section>
+        <div id="concert-info">
+            <h2>演唱會資訊</h2>
+            <p>演唱會日期：2024/12/01</p>
+            <p>場地：台北小巨蛋</p>
+            <p>票價：$1500</p>
+        </div>
+        <button id="buy-ticket">搶票</button>
+        <div id="message"></div>
     </main>
+    <script src="app.js"></script>
     <footer>
         <p>© 2024 演唱會購票系統</p>
     </footer>
