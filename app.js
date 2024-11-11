@@ -3,10 +3,14 @@ document.getElementById('buy-ticket').addEventListener('click', () => {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({})
+        }
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("伺服器回應失敗");
+        }
+        return response.json();
+    })
     .then(data => {
         document.getElementById('message').innerText = data.message; // 顯示伺服器返回的消息
     })
