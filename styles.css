@@ -11,7 +11,6 @@ header {
     margin-bottom: 20px;
 }
 
-/* Header */
 .custom-header {
     display: flex;
     justify-content: space-around;
@@ -27,14 +26,16 @@ header {
     text-decoration: none;
     padding: 0 20px;
 }
-#concert-info {
+
+.concert-info {
     background: #fff;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-#buy-ticket {
+.buy-ticket {
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
@@ -45,11 +46,11 @@ header {
     cursor: pointer;
 }
 
-#buy-ticket:hover {
+.buy-ticket:hover {
     background-color: #0056b3;
 }
 
-#message {
+.message {
     text-align: center;
     margin-top: 20px;
 }
@@ -131,7 +132,6 @@ header {
 .poster-page .buy-button:hover {
     background-color: #3c6e71;
 }
-
 
 /* Poster Section */
 .poster-container {
