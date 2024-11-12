@@ -62,6 +62,15 @@ header {
     text-align: center;
 }
 
+.poster-page .header-item a {
+    text-decoration: none;
+    color: #2f4f4f;
+}
+
+.poster-page .header-item a:hover {
+    text-decoration: underline;
+}
+
 .poster-page main {
     width: 80%;
     max-width: 800px;
