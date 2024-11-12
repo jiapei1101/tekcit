@@ -36,3 +36,72 @@ header {
     text-align: center;
     margin-top: 20px;
 }
+
+/* 針對 concert-poster.html 的樣式，包裹在 .poster-page 類別中 */
+.poster-page .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+
+.poster-page header {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #d8e2ed;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    color: #2f4f4f;
+}
+
+.poster-page .header-item {
+    flex: 1;
+    text-align: center;
+}
+
+.poster-page main {
+    width: 80%;
+    max-width: 800px;
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.poster-page .poster-image img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.poster-page .concert-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #2f4f4f;
+    margin-top: 15px;
+}
+
+.poster-page .concert-description {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #2f4f4f;
+    line-height: 1.5;
+}
+
+.poster-page .buy-button {
+    margin-top: 25px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    color: #ffffff;
+    background-color: #2f4f4f;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.poster-page .buy-button:hover {
+    background-color: #3c6e71;
+}
