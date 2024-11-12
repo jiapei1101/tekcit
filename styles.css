@@ -85,18 +85,19 @@ header {
     color: #2f4f4f;
 }
 
-.poster-page .header-item a:hover {
-    text-decoration: underline;
-}
+// .poster-page .header-item a:hover {
+//     text-decoration: underline;
+// }
 
 .poster-page main {
-    width: 80%;
-    max-width: 800px;
+    width: 100vw; /* 讓內容貼齊頁面邊緣 */
+    max-width: 100%;
     margin-top: 20px;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 確保 padding 不影響元素寬度 */
 }
 
 .poster-page .poster-image img {
