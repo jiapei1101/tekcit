@@ -85,6 +85,12 @@ header {
     color: #2f4f4f;
 }
 
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+}
 // .poster-page .header-item a:hover {
 //     text-decoration: underline;
 // }
