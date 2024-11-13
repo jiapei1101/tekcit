@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>購票守則</title>
+     <style>
+        /* 自訂項目符號樣式 */
+        ul {
+            list-style-type: none; /* 移除預設的項目符號 */
+            padding-left: 0;
+        }
+        ul li::before {
+            content: "❣︎"; /* 使用 ❣︎ 符號 */
+            color: black; /* 設定顏色為黑色 */
+            font-size: 1.2em; /* 調整符號大小 */
+            margin-right: 8px;
+        }
+    </style>
 </head>
 <body>
     <h1>購票守則📜:</h1>
