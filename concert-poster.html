@@ -2,166 +2,45 @@
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>泰坦克購票系統</title>
-    <style>
-        /* 基本樣式 */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            scroll-behavior: smooth;
-        }
-        /* 頂部選單 */
-        nav {
-            background-color: #333;
-            overflow: hidden;
-            text-align: center;
-        }
-        nav a {
-            display: inline-block;
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            transition: background-color 0.3s ease-in-out;
-        }
-        nav a:hover {
-            background-color: #575757;
-        }
-        /* 歡迎區域 */
-        .welcome {
-          background-image: url('https://i.pinimg.com/736x/81/26/b4/8126b4056ecc6c02890d2011593ae4a0.jpg');
-            color: white;
-            padding: 60px;
-            text-align: center;
-        }
-        .welcome h1 {
-            font-size: 60px;
-            margin: 0;
-        }
-
-        .welcome h2{
-          font-size: 30px;
-        }
-
-        
-        .ticket-btn {
-            margin-top: 60px;
-            scroll-behavior: smooth;
-        }
-        .ticket-btn a {
-            padding: 8px 20px;
-            background-color: #3d6a6f;
-            border-radius: 15px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size:15px;
-            transition: background-color 0.3s ease-in-out;
-            text-decoration: none;
-        }
-
-        .ticket-btn a:hover {
-            background-color: #8481a3;
-        }
-        /* 場次資訊 */
-        .event-info {
-            padding: 30px;
-            text-align: center;
-        }
-        .event-info h2 {
-            font-size: 32px;
-            margin-bottom: 50px;
-        }
-        .event-card {
-            background-color: #ccc;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .event-photo {
-            width: 300px; /* 控制圖片框架的寬度 */
-            height: auto;
-        }
-        .event-photo img {
-            width: 100%;
-            height: auto; /* 使圖片根據其原始比例自動縮放 */
-            border-radius: 8px; /* 圖片邊角略微圓滑，增加美觀 */
-        }
-        .event-details {
-            flex-grow: 1;
-            text-align: left;
-        }
-        .event-details p {
-            margin: 5px 0;
-        }
-        .details-btn {
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        .details-btn:hover {
-            background-color: #0056b3;
-        }
-
-        .coming-soon {
-            padding: 100px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #555;
-        }
-
-        /* 版權區域 */
-        .footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="poster-style.css">
 </head>
 <body>
+    <div class="poster-page">
+        <header>
+            <div class="header-item"><a href="index.html">首頁</a></div>
+            <div class="header-item"><a href="#">演唱會資訊</a></div>
+            <div class="header-item"><a href="#">購票說明</a></div>
+            <div class="header-item"><a href="#">登入 / 分享</a></div>
+        </header>
+    <header class="custom-header">
+        <a href="index.html">首頁</a>
+        <a href="#">演唱會資訊</a></div>
+        <a href="#">購票說明</a></div>
+        <a href="#">登入 / 分享</a></div>
+    </header>
 
-    <!-- 頂部選單 -->
-    <nav>
-        <a href="index.html">泰坦克購票系統</a>
-        <a href="concert-poster.html">演唱會資訊</a>
-        <a href="ticket-rules.html">購票說明</a>
-        <a href="#">登入/分享</a>
-    </nav>
-
-    <!-- 歡迎區域 -->
-    <div class="welcome">
-        <h1>Welcome~</h1>
-        <h2>這裡是泰坦克購票系統</h2>
-        <div class="ticket-btn">
-          <a href="#eventSection">購票</a>
-        </div>
-    </div>
-        
-    <main class="full-width"> <!-- 使用新的 .full-width 類別 -->
+        <main class="container">
+            <div class="poster-image">
+                <img src="concert-poster.jpg" alt="全知讀者視角演唱會" />
+            </div>
+            <div class="concert-title">全知讀者視角演唱會</div>
+            <div class="concert-description">
+                <p>節目介紹</p>
+    <main>
         <div class="poster-container">
-            <img src="concert-poster.jpg" alt="全知讀者視角演唱會海報">
+                <img src="concert-poster.jpg" alt="全知讀者視角演唱會海報">
             <h2>全知讀者視角演唱會</h2>
         </div>
-
-        <section class="section-info">
-            <h3>節目介紹</h3>
-            <p>全知讀者視角演唱會</p>
-        </section>
+            <section class="section-info">
+                <h3>節目介紹</h3>
+                <p>全知讀者視角演唱會</p>
+            </div>
+            </section>
             
-        <div class="purchase-btn-container">
+            <div class="purchase-btn-container">
             <button class="buy-button">立即購票</button>
-        </div>
-    </main>
+            </div>
+        </main>
+    </div>
 </body>
 </html>
-
