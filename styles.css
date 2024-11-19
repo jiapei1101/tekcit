@@ -249,3 +249,13 @@ header {
   background-color: #85a6ca; /* 你可以改成任意顏色 */
   color: white; /* 當背景顏色變化時，文字顏色也變白 */
 }
+
+.footer {
+            width:100%;
+            position:fixed;
+            bottom: 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
