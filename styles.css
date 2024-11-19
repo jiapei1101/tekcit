@@ -257,3 +257,9 @@ header {
             text-align: center;
             padding: 20px;
         }
+.link {
+    color: black;
+}
+.link:hover {
+    color: white;
+}
