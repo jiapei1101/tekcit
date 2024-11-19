@@ -130,15 +130,16 @@ a:hover{
     margin-top: 25px;
     padding: 10px 20px;
     font-size: 1.2rem;
-    color: #ffffff;
-    background-color: #2f4f4f;
+    color: #000;
+    background-color: #d8e2ed;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .poster-page .buy-button:hover {
-    background-color: #3c6e71;
+    background-color: #85a6ca;
+    color: white;
 }
 
 /* Poster Section */
@@ -186,8 +187,8 @@ a:hover{
 
 .purchase-btn {
     font-size: 18px;
-    color: #000;
-    background-color: #d8e2ed;
+    color: #333;
+    background-color: #ffffff;
     border: 2px solid #333;
     padding: 10px 20px;
     cursor: pointer;
@@ -195,8 +196,7 @@ a:hover{
 }
 
 .purchase-btn:hover {
-    background-color: #85a6ca;
-    color: white;
+    background-color: #e0e0e0;
 }
 
 
