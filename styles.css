@@ -213,58 +213,6 @@ a:hover{
     background-color: #e0e0e0;
 }
 
-
-/* 針對 mainpage.html 的樣式 */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
-  color: black;
-  background-color: white;
-}
-
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.custom-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: #c8d8ece1;
-  padding: 0px 0;
-  font-size: 21px;
-  border-bottom: 2px solid #333;
-}
-
-.custom-header a {
-  flex: 1; /* 每個項目等比例寬度 */
-  color: #333;
-  text-decoration: none;
-  padding: 25px 0; /* 控制選項內容的上下內邊距 */
-  margin: 0;
-  text-align: center; /* 讓文字居中 */
-  background-color: transparent; /* 初始背景顏色 */
-  transition: background-color 0.3s ease-in-out; /* 過渡效果 */
-  box-sizing: border-box;
-}
-
-/* 當滑鼠停留時顯示背景顏色 */
-.custom-header a:hover {
-  background-color: #85a6ca; /* 你可以改成任意顏色 */
-  color: white; /* 當背景顏色變化時，文字顏色也變白 */
-}
-
 .footer {
             background-color: #333;
             color: white;
