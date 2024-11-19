@@ -186,8 +186,8 @@ a:hover{
 
 .purchase-btn {
     font-size: 18px;
-    color: #333;
-    background-color: #ffffff;
+    color: #000;
+    background-color: #d8e2ed;
     border: 2px solid #333;
     padding: 10px 20px;
     cursor: pointer;
@@ -195,7 +195,8 @@ a:hover{
 }
 
 .purchase-btn:hover {
-    background-color: #e0e0e0;
+    background-color: #85a6ca;
+    color: white;
 }
 
 
