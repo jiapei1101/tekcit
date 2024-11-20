@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泰克希特購票系統</title>
+</head>
+<body>
+  <!-- 頂部選單 -->
+  <nav>
+    <a href="index.html">泰克希特購票系統</a>
+    <a href="concert-poster.html">演唱會資訊</a>
+    <a href="ticket-rules.html">購票說明</a>
+    <a href="LogIn.html">登入</a>
+  </nav>
 
+  <form id="google-form" class="form">
+    <div class="seat">
+      <label id="seat-text"> seat </label>
+    </div>
+    <div class="sel-quantity">
+      <select id="quantity">
+        <option value="" selected disabled>請選擇購買張數</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+    </div>
+    <div class="submit-w">
+      <button class="submit"> 送出 </button>
+    </div>
+  </form>
+
+  
+  <!-- 版權區域 -->
+  <div class="footer">
+    © 2024 泰克希特購票系統
+  </div>
+</body>
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+  let isSubmitting = false;
+  const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+  var limit_vip = 0;
+  var limit_a = 0;
+  fetch(uri)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      limit_vip= res.values[1][1];
+      limit_a= res.values[1][2];
+    })
+
+  function submitBtn(){
+        if ($('#content-text').val()) {//檢查必填欄位是否為空
+          $.ajax({
+            //<form action=" url在這 ">
+            url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
+            crossDomain: true,//解決跨網域CORS的問題
+            data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
+              "entry.1218460682": $('#seat-text').val() //座位區
+              "entry.626747452": $('#quantity').val() //張數
+            },
+            type: "POST",
+            dataType: "JSONP",
+            complete: function () {
+              const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+              fetch(uri)
+                .then(res => res.json())
+                .then(res => {
+                  const data = res.values;
+                  limit_vip= data[1][1];
+                  limit_a= data[1][2];
+
+                  if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
+                    alert(" 門票已售罄，感謝您的支持！ ");
+                    $('#quantity').val('');
+                    isSubmitting = false; // 解鎖
+                    //window.location.replace("index.html");
+                  }
+                  else {
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
+                });
+            }
+          });
+        }
+      //});
+  }
+
+  function checkLimitAndSubmit() {
+    const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+    
+    fetch(uri)
+      .then(res => res.json())
+      .then(res => {
+        const data = res.values;
+        limit_vip= data[1][1];
+        limit_a= data[1][2];
+
+        if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
+            alert(" 門票已售罄，感謝您的支持！ ");
+            $('#content-text').val('');
+            isSubmitting = false; // 解鎖
+            //window.location.replace("index.html");
+        } else {
+            submitBtn();
+        }
+      })
+      .catch(error => {
+        console.error("訂單錯誤：", error);
+        isSubmitting = false; // 如果發生錯誤，也解鎖
+      });
+}
+
+  $(".submit").on('click', function(e) {
+    //擋掉form默認事件，為了先檢查
+    e.preventDefault();
+
+    if (isSubmitting) {
+        alert("請稍後，正在確認您的訂單...");
+        return; // 如果已經在提交狀態，不允許重複提交
+    }
+
+    isSubmitting = true; // 加鎖
+    checkLimitAndSubmit(); // 調用檢查和提交函數
+  });
+  
+</script>
+</html>
