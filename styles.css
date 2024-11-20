@@ -230,9 +230,9 @@ a:hover{
             text-align: center;
             padding: 20px;
         }
-.link {
+.buy-button {
     color: black;
 }
-.link:hover {
+.buy-button:hover {
     color: white;
 }
