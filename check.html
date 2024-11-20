@@ -55,13 +55,13 @@
     })
 
   function submitBtn(){
-        if ($('#content-text').val()) {//檢查必填欄位是否為空
+        if ($('#quantity').val()) {//檢查必填欄位是否為空
           $.ajax({
             //<form action=" url在這 ">
             url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
             crossDomain: true,//解決跨網域CORS的問題
             data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
-              "entry.1218460682": $('#seat-text').val() //座位區
+              "entry.1218460682": $('#seat-text').val(), //座位區
               "entry.626747452": $('#quantity').val() //張數
             },
             type: "POST",
@@ -72,8 +72,8 @@
                 .then(res => res.json())
                 .then(res => {
                   const data = res.values;
-                  limit_vip= data[1][1];
-                  limit_a= data[1][2];
+                  limit_vip= parseInt(data[1][1], 10);;
+                  limit_a= parseInt(data[1][2], 10);;
 
                   if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
                     alert(" 門票已售罄，感謝您的支持！ ");
@@ -102,8 +102,8 @@
       .then(res => res.json())
       .then(res => {
         const data = res.values;
-        limit_vip= data[1][1];
-        limit_a= data[1][2];
+        limit_vip= parseInt(data[1][1], 10);
+        limit_a= parseInt(data[1][2], 10);
 
         if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
             alert(" 門票已售罄，感謝您的支持！ ");
