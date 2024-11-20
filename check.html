@@ -16,7 +16,7 @@
 
   <form id="google-form" class="form">
     <div class="seat">
-      <label id="seat-text"> VIP </label>
+      <label id="seat-text">VIP</label>
     </div>
     <div class="sel-quantity">
       <select id="quantity">
@@ -61,7 +61,7 @@
             url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
             crossDomain: true,//解決跨網域CORS的問題
             data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
-              "entry.1218460682": $('#seat-text').text(), //座位區
+              "entry.1218460682": $('#seat-text').text().replace(/\s/g, ''), //座位區
               "entry.626747452": $('#quantity').val() //張數
             },
             type: "POST",
