@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>周杰倫演唱會</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+      function redirectToLogin() {
+          var isLoggedIn = false; 
+          if (!isLoggedIn) {
+              // 顯示提示訊息
+              alert('請先登入！');
+              // 跳轉到登入頁面
+              window.location.href = 'LogIn.html';
+          } else {
+              // 已登入，跳轉到購票頁面
+              window.location.href = 'seat.html';
+          }
+      }
+  </script>
 </head>
 <body class="poster-page">
     <nav>
@@ -41,8 +55,7 @@
                 <p>售票日期：2024 年 10 月 23 日（三）中午12:00開賣</p>
         </div>
         <div class="purchase-btn-container">
-            <button class="buy-button">
-                <a href="seat.html"class = "link">立即購票</a></button>
+            <button class="buy-button"><a href="javascript:void(0);" class="link" onclick="redirectToLogin()">立即購票</a></button>
         </div>
     </main>
     <div class="footer">
