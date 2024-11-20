@@ -72,8 +72,8 @@
                 .then(res => res.json())
                 .then(res => {
                   const data = res.values;
-                  limit_vip= parseInt(data[1][1], 10);;
-                  limit_a= parseInt(data[1][2], 10);;
+                  limit_vip= parseInt(data[1][1], 10);
+                  limit_a= parseInt(data[1][2], 10);
 
                   if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
                     alert(" 門票已售罄，感謝您的支持！ ");
