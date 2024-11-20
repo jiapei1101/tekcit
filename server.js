@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
 
 // 提供靜態檔案，確保 'public' 資料夾存在並包含前端檔案（如 index.html）
 app.use(express.static(path.join(__dirname, 'public'))); 
