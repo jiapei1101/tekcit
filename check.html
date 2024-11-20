@@ -75,7 +75,7 @@
                   limit_vip= parseInt(data[1][1], 10);
                   limit_a= parseInt(data[1][2], 10);
 
-                  if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
+                  if (($('#seat-text').text() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').text() == "A" && limit_a <= $('#quantity').val())) {
                     alert(" 門票已售罄，感謝您的支持！ ");
                     $('#quantity').val('');
                     isSubmitting = false; // 解鎖
@@ -105,7 +105,7 @@
         limit_vip= parseInt(data[1][1], 10);
         limit_a= parseInt(data[1][2], 10);
 
-        if (($('#seat-text').val() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').val() == "A" && limit_a <= $('#quantity').val())) {
+        if (($('#seat-text').text() == "VIP" && limit_vip <= $('#quantity').val()) || ($('#seat-text').text() == "A" && limit_a <= $('#quantity').val())) {
             alert(" 門票已售罄，感謝您的支持！ ");
             $('#content-text').val('');
             isSubmitting = false; // 解鎖
