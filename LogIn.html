@@ -199,6 +199,7 @@
           // 模擬登入成功
           message.textContent = '登入成功！';
           message.className = 'message success';
+          localStorage.setItem('userLoggedIn', 'true'); 
 
           setTimeout(() => {
                 window.location.href = 'seat.html'; // 登入成功後跳轉的頁面
