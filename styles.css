@@ -196,13 +196,12 @@ a:hover{
 }
 .event-details {
     text-align: left; /* 設定文字左對齊 */
-    margin: 20px; /* 增加區塊與周圍的間距 */
+    margin: 0px; /* 增加區塊與周圍的間距 */
     padding: 10px; /* 增加內部留白 */
     background-color: #f9f9f9; /* 背景顏色讓文字更醒目 */
-    border-left: 5px solid #007bff; /* 左側增加彩色邊框 */
     font-size: 16px; /* 字體大小 */
     color: #333; /* 字體顏色 */
-    line-height: 1.8; /* 調整行距，增加可讀性 */
+    line-height: 1.4; /* 調整行距，增加可讀性 */
     border-radius: 5px; /* 圓角效果 */
 }
 
