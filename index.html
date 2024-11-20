@@ -96,11 +96,12 @@
         }
         .event-details {
             margin: 20px;
-            flex-grow: 1;
+            flex-grow: 2;
             text-align: left;
         }
         .event-details p {
             margin: 5px 0;
+             
         }
         .details-btn {
             padding: 10px;
@@ -113,6 +114,14 @@
             background-color: #85a6ca;
             color: white;
         }
+        .details-btns {
+            padding: 10px;
+            background-color: #d3d2d5;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+
         a{
           text-decoration: none;
         }
@@ -187,11 +196,36 @@
                 <img src="https://github.com/jiapei1101/tekcit/blob/main/IMG/main02.jpg?raw=true">
             </div>
             <div class="event-details">
-                <p>(演唱會名稱)</p>
-                <p>(日期)</p>
+                <p>泡泡瑪特銀河演唱會</p>
+                <p>2024年12月25日</p>
+                <p>地點:台北大巨蛋</p>
             </div>
-            <button class="details-btn">查看詳情</button>
+            <button class="details-btns">(已售完)</button>
         </div>
+        <!-- 第三個場次 -->
+        <div class="event-card">
+          <div class="event-photo">
+              <!-- 演唱會照片 -->
+              <img src="https://i.pinimg.com/736x/4c/f6/47/4cf6472e795ee3d4f3811e2085a96bcd.jpg">
+          </div>
+          <div class="event-details">
+              <p>BTS YTC 演唱會</p>
+              <p>2025年06月13</p>
+              <p>地點:台北大巨蛋</p>
+          </div>
+          <button class="details-btns">(已售完)</button>
+      </div>
+      <script>
+        // 選取所有已售完按鈕
+        const soldOutButtons = document.querySelectorAll('.details-btns');
+    
+        // 為每個按鈕綁定點擊事件
+        soldOutButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                alert('抱歉，該票卷已售完！');
+            });
+        });
+    </script>
     </div>
 
      <!-- 敬請期待區域 -->
