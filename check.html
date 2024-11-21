@@ -99,19 +99,23 @@
 
                   if($('#seat-text').text() == "VIP" && data[0][0]!="#N/A"){
                     limit_vip= parseInt(data[0][0], 10);
+                    let purchaseSuccess = false;
                     for(let i=2; i<=limit_vip+1; i++){
                       if($('#email-phone').text()==data[i][1]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
+                        purchaseSuccess = true;
                         //最後跳轉到主頁面
                         window.location.replace("index.html");
                       }
                     }
-                    alert(" 門票庫存數量不足，感謝您的支持！ ");
-                    $('#quantity').val('');
-                    isSubmitting = false; // 解鎖
-                    //window.location.replace("index.html");
+                    if (!purchaseSuccess) {  // 如果沒有成功購票，顯示庫存不足
+                      alert("門票庫存數量不足，感謝您的支持！");
+                      $('#quantity').val('');  // 清空欄位
+                      isSubmitting = false;  // 解鎖
+                      //window.location.replace("index.html");
+                    }
                   }
                   else if($('#seat-text').text() == "VIP" && data[0][0]=="#N/A"){
                     alert(" 購票成功！請注意查收電子票券！ ");
