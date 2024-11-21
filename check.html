@@ -112,6 +112,13 @@
                     isSubmitting = false; // 解鎖
                     //window.location.replace("index.html");
                   }
+                  else if($('#seat-text').text() == "VIP" && data[0][0]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                        //完成後把這些欄位清空
+                        $('#quantity').val('');
+                        //最後跳轉到主頁面
+                        window.location.replace("index.html");
+                  }
 
                   if($('#seat-text').text() == "A" && data[0][3]!="#N/A"){
                     limit_a= parseInt(data[0][3], 10);
