@@ -98,8 +98,8 @@
 
                   if($('#seat-text').text() == "VIP" && data[0][0]!="#N/A"){
                     limit_vip= parseInt(data[0][0], 10);
-                    for(int i=2; i<limit_vip+1; i++){
-                      if($('#email_phone').text()==data[i][1]){ //成功買到
+                    for(let i=2; i<limit_vip+1; i++){
+                      if($('#email-phone').text()==data[i][1]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
@@ -122,8 +122,8 @@
 
                   if($('#seat-text').text() == "A" && data[0][3]!="#N/A"){
                     limit_a= parseInt(data[0][3], 10);
-                    for(int i=2; i<limit_a+1; i++){
-                      if($('#email_phone').text()==data[i][4]){ //成功買到
+                    for(let i=2; i<limit_a+1; i++){
+                      if($('#email-phone').text()==data[i][4]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
@@ -139,8 +139,8 @@
 
                   if($('#seat-text').text() == "MD203" && data[0][6]!="#N/A"){
                     limit_md203= parseInt(data[0][6], 10);
-                    for(int i=2; i<limit_md203+1; i++){
-                      if($('#email_phone').text()==data[i][7]){ //成功買到
+                    for(let i=2; i<limit_md203+1; i++){
+                      if($('#email-phone').text()==data[i][7]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
