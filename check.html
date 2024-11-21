@@ -80,7 +80,7 @@
             url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
             crossDomain: true,//解決跨網域CORS的問題
             data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
-              "entry.768916926": $('#email_phone').text().replace(/\s/g, ''), //電子郵件or手機
+              "entry.768916926": $('#email-phone').text().replace(/\s/g, ''), //電子郵件or手機
               "entry.1218460682": $('#seat-text').text().replace(/\s/g, ''), //座位區
               "entry.626747452": $('#quantity').val() //張數
             },
