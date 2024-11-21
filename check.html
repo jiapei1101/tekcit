@@ -42,6 +42,19 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
+  window.onload = function () {
+    const emailPhone = localStorage.getItem('emailPhone');
+
+    if (emailPhone) {
+        console.log('接收到的 Email 或手機號碼：', emailPhone);
+        document.getElementById('display-email-phone').textContent = emailPhone;
+    } else {
+        console.log('未檢測到登入信息，請返回登入頁面');
+        alert('未檢測到登入信息，請重新登入！');
+        window.location.href = 'login.html';
+    }
+  };
+  
   let isSubmitting = false;
   const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
   var limit_vip = 0;
