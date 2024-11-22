@@ -51,7 +51,7 @@
 
     if (emailPhone) {
         console.log('接收到的 Email 或手機號碼：', emailPhone);
-        $('#email-phone').text(emailPhone);  // 使用 .text() 來設置內容
+        $('#email-phone-text').text(emailPhone);  // 使用 .text() 來設置內容
     }
     else {
         console.log('未檢測到登入信息，請返回登入頁面');
@@ -87,7 +87,7 @@
             url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
             crossDomain: true,//解決跨網域CORS的問題
             data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
-              "entry.768916926": $('#email-phone').text().replace(/\s/g, ''), //電子郵件or手機
+              "entry.768916926": $('#email-phone-text').text().replace(/\s/g, ''), //電子郵件or手機
               "entry.1218460682": $('#seat-text').text().replace(/\s/g, ''), //座位區
               "entry.626747452": $('#quantity').val() //張數
             },
@@ -108,7 +108,7 @@
                     limit_vip= parseInt(data[0][0], 10);
                     let purchaseSuccess = false;
                     for(let i=2; i<=limit_vip+1; i++){
-                      if($('#email-phone').text()==data[i][1]){ //成功買到
+                      if($('#email-phone-text').text()==data[i][1]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
@@ -135,7 +135,7 @@
                   if($('#seat-text').text() == "A" && data[0][3]!="#N/A"){
                     limit_a= parseInt(data[0][3], 10);
                     for(let i=2; i<=limit_a+1; i++){
-                      if($('#email-phone').text()==data[i][4]){ //成功買到
+                      if($('#email-phone-text').text()==data[i][4]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
@@ -159,7 +159,7 @@
                   if($('#seat-text').text() == "MD203" && data[0][6]!="#N/A"){
                     limit_md203= parseInt(data[0][6], 10);
                     for(let i=2; i<=limit_md203+1; i++){
-                      if($('#email-phone').text()==data[i][7]){ //成功買到
+                      if($('#email-phone-text').text()==data[i][7]){ //成功買到
                         alert(" 購票成功！請注意查收電子票券！ ");
                         //完成後把這些欄位清空
                         $('#quantity').val('');
