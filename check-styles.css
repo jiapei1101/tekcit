@@ -29,10 +29,13 @@ nav a:hover {
 
 /*  */
 .form-w{
-    margin: 30px;
+    margin-top: 30px;
     border-radius: 20px;
     border: 1.5px solid #1e1e1e96;
     width: 80vw;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 .form{
     display: flex;
