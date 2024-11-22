@@ -72,6 +72,11 @@ nav a:hover {
     border-radius: 10px;
     width: 10vw;
     font-weight: bold;
+    border: none;
+}
+.submit:hover{
+    background: #85a6ca;
+    color: white;
 }
 
 /*  */
