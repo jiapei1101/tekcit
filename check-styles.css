@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -7,13 +8,18 @@ body {
     margin: 0px;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
-
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 讓主內容區域填滿多餘空間 */
+}
 header {
     text-align: center;
     margin-bottom: 20px;
 }
- nav {
+nav {
     background-color: #333;
     overflow: hidden;
     text-align: center;
@@ -52,6 +58,7 @@ nav a:hover {
     border-radius: 8px; /* 圖片邊角略微圓滑，增加美觀 */
 }
 .event-details {
+    margin-right: 20px;
     flex-grow: 2;
     text-align: left;
     :first-child{
