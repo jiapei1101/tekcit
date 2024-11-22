@@ -5,6 +5,8 @@ body {
     text-align: center;
     padding: 0px;
     margin: 0px;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -29,13 +31,11 @@ nav a:hover {
 
 /*  */
 .form-w{
-    margin-top: 30px;
+    margin: 30px;
     border-radius: 20px;
     border: 1.5px solid #1e1e1e96;
     width: 80vw;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    align-self: center;
 }
 .form{
     display: flex;
@@ -97,13 +97,10 @@ nav a:hover {
 
 /*  */
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 20px 0 20px;
+    padding: 20px;
 }
 .link {
     color: black;
