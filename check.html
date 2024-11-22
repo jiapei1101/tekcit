@@ -58,10 +58,10 @@
         window.location.href = 'LogIn.html';
     }
 
-    if ($('#seat-text').text().replace(/\s/g, '')=='MD203') {
-      $('#opt2').attr('disabled', true);
-      $('#opt3').attr('disabled', true);
-      $('#opt4').attr('disabled', true);
+    if ($('#seat-text').text().replace(/\s/g, '') == 'MD203') {
+      $('#opt2').prop('disabled', true);
+      $('#opt3').prop('disabled', true);
+      $('#opt4').prop('disabled', true);
     }
 });
   
