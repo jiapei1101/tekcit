@@ -79,10 +79,10 @@ nav a:hover {
     border: 1.5px solid #1e1e1e96;
 }
 .submit-w{
+    margin: 30px;
     width: 10%;
 }
 .submit{
-    margin: 30px;
     background: #d8e2ed;
     padding: 8px;
     border-radius: 10px;
