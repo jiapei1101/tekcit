@@ -24,10 +24,10 @@
     <div class="sel-quantity">
       <select id="quantity">
         <option value="" selected disabled>請選擇購買張數</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+        <option value="1" id="opt1">1</option>
+        <option value="2" id="opt2">2</option>
+        <option value="3" id="opt3">3</option>
+        <option value="4" id="opt4">4</option>
       </select>
     </div>
     <div class="submit-w">
@@ -56,6 +56,12 @@
         console.log('未檢測到登入信息，請返回登入頁面');
         alert('未檢測到登入信息，請重新登入！');
         window.location.href = 'LogIn.html';
+    }
+
+    if ($('#seat-text').text().replace(/\s/g, '')=='MD203') {
+      $('#opt2').prop('disabled', true);
+      $('#opt3').prop('disabled', true);
+      $('#opt4').prop('disabled', true);
     }
 });
   
@@ -119,10 +125,10 @@
                   }
                   else if($('#seat-text').text() == "VIP" && data[0][0]=="#N/A"){
                     alert(" 購票成功！請注意查收電子票券！ ");
-                        //完成後把這些欄位清空
-                        $('#quantity').val('');
-                        //最後跳轉到主頁面
-                        window.location.replace("index.html");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
                   }
 
                   if($('#seat-text').text() == "A" && data[0][3]!="#N/A"){
@@ -141,6 +147,13 @@
                     isSubmitting = false; // 解鎖
                     //window.location.replace("index.html");
                   }
+                  else if($('#seat-text').text() == "A" && data[0][3]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
 
                   if($('#seat-text').text() == "MD203" && data[0][6]!="#N/A"){
                     limit_md203= parseInt(data[0][6], 10);
@@ -157,6 +170,13 @@
                     $('#quantity').val('');
                     isSubmitting = false; // 解鎖
                     //window.location.replace("index.html");
+                  }
+                  else if($('#seat-text').text() == "MD203" && data[0][6]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
                   }
 
                   /*
