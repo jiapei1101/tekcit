@@ -117,9 +117,6 @@
         }
     </style>
 
-    <!-- 引入 user.js -->
-    <script src="user.js"></script>
-
     <script>
         let selectedArea = "";
 
@@ -137,6 +134,31 @@
             } else {
                 alert('請先選擇一個區域！');
             }
+        }
+       window.onload = function() {
+            const storedUser = localStorage.getItem('userEmailPhone');
+            if (storedUser) {
+                displayUserInfo(storedUser);
+            }
+        };
+
+        // 顯示使用者資訊
+        function displayUserInfo(userName) {
+            const navBar = document.querySelector('nav');
+            const userInfoDiv = document.createElement('div');
+            userInfoDiv.className = 'user-info';
+
+            // 預設頭像圖
+            const avatar = document.createElement('img');
+            avatar.src = 'https://via.placeholder.com/30'; // 使用一個預設頭像URL
+
+            // 使用者名稱
+            const nameText = document.createTextNode(userName);
+
+            userInfoDiv.appendChild(avatar);
+            userInfoDiv.appendChild(nameText);
+
+            navBar.appendChild(userInfoDiv); // 把使用者資訊加入到選單欄
         }
     </script>
 </head>
