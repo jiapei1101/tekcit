@@ -237,7 +237,7 @@
                 <p>2024年12月25日</p>
                 <p>地點:台北大巨蛋</p>
             </div>
-            <button class="details-btns sold-out">(已售完)</button>
+            <button class="detail-btn">(已售完)</button>
         </div>
         <!-- 第三個場次 -->
         <div class="event-card">
@@ -250,7 +250,7 @@
               <p>2025年06月13日</p>
               <p>地點:台北大巨蛋</p>
           </div>
-          <button class="details-btns sold-out">(已售完)</button>
+          <button class="detail-btn">(已售完)</button>
       </div>
       <!-- 模態視窗 -->
     <div id="modal">
@@ -273,7 +273,7 @@
         }
 
         // 為已售完按鈕綁定點擊事件
-        const soldOutButtons = document.querySelectorAll('.details-btns.sold-out');
+        const soldOutButtons = document.querySelectorAll('.detail-btn');
         soldOutButtons.forEach(button => {
             button.addEventListener('click', showModal);
         });
