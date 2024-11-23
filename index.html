@@ -1,48 +1,139 @@
-<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Concert Ticket Booking</title>
+    <title>泰克希特購票系統</title>
     <style>
         /* 基本樣式 */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f7f7f7;
         }
-        header {
+        /* 頂部選單 */
+        nav {
             background-color: #333;
-            color: white;
+            overflow: hidden;
             text-align: center;
-            padding: 10px 0;
         }
-        main {
-            padding: 20px;
-        }
-        .concert {
-            margin: 20px 0;
-            padding: 15px;
-            background: #fff;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-        }
-        .concert h2 {
-            margin: 0 0 10px;
-        }
-        .details-btns {
-            padding: 10px 15px;
-            background-color: #007bff;
+        nav a {
+            display: inline-block;
             color: white;
+            padding: 25px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        /* 歡迎區域 */
+        .welcome {
+          background-image: url('https://i.pinimg.com/736x/81/26/b4/8126b4056ecc6c02890d2011593ae4a0.jpg');
+            color: white;
+            padding: 60px;
+            text-align: center;
+        }
+        .welcome h1 {
+            font-size: 60px;
+            margin: 0;
+        }
+
+        .welcome h2{
+          font-size: 30px;
+        }
+
+        
+        .ticket-btn {
+            margin-top: 60px;
+            scroll-behavior: smooth;
+        }
+        .ticket-btn a {
+            padding: 8px 20px;
+            background-color: #d8e2ed;
+            border-radius: 15px;
+            color: black;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
+            font-size:15px;
+            transition: background-color 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .ticket-btn a:hover {
+            background-color: #85a6ca;
+            color: white;
+        }
+        /* 場次資訊 */
+        .event-info {
+            padding: 30px;
+            text-align: center;
+        }
+        .event-info h2 {
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+        .event-card {
+            background-color: #e9e7ea;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .event-photo {
+            width: 300px; /* 控制圖片框架的寬度 */
+            height: auto;
+        }
+        .event-photo img {
+            width: 100%;
+            height: auto; /* 使圖片根據其原始比例自動縮放 */
+            border-radius: 8px; /* 圖片邊角略微圓滑，增加美觀 */
+        }
+        .event-details {
+            margin: 20px;
+            flex-grow: 2;
+            text-align: left;
+        }
+        .event-details p {
+            margin: 5px 0;
+             
+        }
+        .details-btn {
+            padding: 10px;
+            background-color: #d8e2ed;
+            color: #000;
+            border: none;
+            cursor: pointer;
+        }
+        .details-btn:hover {
+            background-color: #85a6ca;
+            color: white;
         }
         .details-btns.sold-out {
             background-color: #aaa;
             cursor: not-allowed;
         }
+
+        a{
+          text-decoration: none;
+        }
+        a:hover{
+          text-decoration: none;
+        }
+        .coming-soon {
+            padding: 100px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #555;
+        }
+
         /* 模態視窗樣式 */
         #modal {
             display: none;
@@ -75,28 +166,87 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
+        /* 版權區域 */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        .link {
+            color: black;
+        }
+        .link:hover {
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>演唱會票卷系統</h1>
-    </header>
-    <main>
-        <div class="concert">
-            <h2>粥餅輪演唱會</h2>
-            <p>地點：台北小巨蛋</p>
-            <p>時間：2024-12-01</p>
-            <button class="details-btns">查看詳情</button>
-        </div>
-        <div class="concert">
-            <h2>泡泡瑪特拉布布Labubu 2052 銀河演唱會</h2>
-            <p>地點：高雄巨蛋</p>
-            <p>時間：2024-12-25</p>
-            <button class="details-btns sold-out">已售完</button>
-        </div>
-    </main>
 
-    <!-- 模態視窗 -->
+    <!-- 頂部選單 -->
+    <nav>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
+    </nav>
+
+    <!-- 歡迎區域 -->
+    <div class="welcome">
+        <h1>Welcome~</h1>
+        <h2>這裡是泰克希特購票系統</h2>
+        <div class="ticket-btn">
+          <a href="#eventSection" class = "link">查看相關資訊</a>
+        </div>
+    </div>
+
+    <!-- 場次資訊 -->
+    <div class="event-info" id="eventSection">
+        <h2>場次資訊</h2>
+
+        <!-- 第一個場次 -->
+        <div class="event-card">
+            <div class="event-photo">
+                <img src="https://github.com/jiapei1101/tekcit/blob/main/IMG/%E9%A4%85%E8%BC%AA.jpg?raw=true">
+            </div>
+            <div class="event-details">
+                <p>周杰倫演唱會</p>
+                <p>2024年12月5日</p>
+                <p>地點:台北大巨蛋</p>
+            </div>
+            <button class="details-btn">
+                <a href="concert-poster.html" class = "link"> 查看資訊</a>
+            </button>
+        </div>
+
+        <!-- 第二個場次 -->
+        <div class="event-card">
+            <div class="event-photo">
+                <!-- 演唱會照片 -->
+                <img src="https://github.com/jiapei1101/tekcit/blob/main/IMG/main02.jpg?raw=true">
+            </div>
+            <div class="event-details">
+                <p>泡泡瑪特銀河演唱會</p>
+                <p>2024年12月25日</p>
+                <p>地點:台北大巨蛋</p>
+            </div>
+            <button class="details-btns sold-out">(已售完)</button>
+        </div>
+        <!-- 第三個場次 -->
+        <div class="event-card">
+          <div class="event-photo">
+              <!-- 演唱會照片 -->
+              <img src="https://i.pinimg.com/736x/4c/f6/47/4cf6472e795ee3d4f3811e2085a96bcd.jpg">
+          </div>
+          <div class="event-details">
+              <p>BTS YTC 演唱會</p>
+              <p>2025年06月13日</p>
+              <p>地點:台北大巨蛋</p>
+          </div>
+          <button class="details-btns sold-out">(已售完)</button>
+      </div>
+      <!-- 模態視窗 -->
     <div id="modal">
         <p>抱歉，該票卷已售完！</p>
         <button onclick="closeModal()">確定</button>
@@ -122,5 +272,18 @@
             button.addEventListener('click', showModal);
         });
     </script>
+    </div>
+
+     <!-- 敬請期待區域 -->
+     <div class="coming-soon">
+     敬請期待
+     </div>
+
+     <!-- 版權區域 -->
+     <div class="footer">
+     © 2024 泰克希特購票系統
+     </div>
+
+
 </body>
 </html>
