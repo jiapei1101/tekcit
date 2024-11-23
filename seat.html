@@ -7,39 +7,39 @@
     <style>
         /* 基本樣式 */
         body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-    padding: 0px;
-    margin: 0px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
- nav {
-    background-color: #333;
-    overflow: hidden;
-    text-align: center;
-}
-nav a {
-    display: inline-block;
-    color: white;
-    padding: 25px 20px;
-    text-decoration: none;
-    transition: background-color 0.3s ease-in-out;
-}
-nav a:hover {
-    background-color: #575757;
-}
-        /* 主容器樣式 */
-        .main-container {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
             display: flex;
-            margin: 20px;
+            flex-direction: row;
         }
-        /* 圖片容器 */
+        /* 頂部選單 */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        /* 圖片及選擇區域 */
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            padding: 20px;
+        }
         .image-container {
             flex: 2;
             margin-right: 20px;
@@ -51,17 +51,15 @@ nav a:hover {
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        /* 區域選擇 */
         .selection-container {
             flex: 1;
             background-color: #f9f9f9;
-            padding: 20px;
             border: 1px solid #ddd;
             border-radius: 5px;
+            padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .selection-container h3 {
-            text-align: center;
             margin-bottom: 20px;
         }
         .selection-container ul {
@@ -69,14 +67,15 @@ nav a:hover {
             padding: 0;
         }
         .selection-container ul li {
-            margin: 10px 0;
+            margin-bottom: 10px;
         }
         .selection-container ul li button {
+            display: block;
             width: 100%;
             padding: 10px;
-            border: none;
             background-color: #333;
             color: white;
+            border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: background-color 0.3s;
@@ -90,8 +89,30 @@ nav a:hover {
             color: white;
             text-align: center;
             padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
+    <script>
+        let selectedArea = "";
+
+        function selectArea(area) {
+            selectedArea = area;
+            alert(`你所選的是${area}`);
+        }
+
+        function confirmSeat() {
+            if (selectedArea) {
+                const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
+                if (confirm(confirmMessage)) {
+                    window.location.href = 'check.html';
+                }
+            } else {
+                alert('請先選擇一個區域！');
+            }
+        }
+    </script>
 </head>
 <body>
 
@@ -103,20 +124,21 @@ nav a:hover {
         <a href="LogIn.html">登入</a>
     </nav>
 
-    <!-- 主容器 -->
-    <div class="main-container">
+    <!-- 主內容區域 -->
+    <div class="main-content">
         <!-- 座位圖區域 -->
         <div class="image-container">
             <h2>演唱會座位圖</h2>
             <img src="https://raw.githubusercontent.com/jiapei1101/tekcit/refs/heads/main/IMG/%E5%BA%A7%E4%BD%8D%E5%9C%96(%E5%88%86%E5%8D%80.jpg" alt="演唱會座位圖">
         </div>
 
-        <!-- 區域選擇 -->
+        <!-- 選擇區域 -->
         <div class="selection-container">
             <h3>選擇區域</h3>
             <ul>
-                <li><button onclick="window.location.href='check.html'">VIP 區</button></li>
-                <li><button onclick="window.location.href='check.html'">A 區</button></li>
+                <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
+                <li><button onclick="selectArea('A 區')">A 區</button></li>
+                <li><button onclick="confirmSeat()">確認座位</button></li>
             </ul>
         </div>
     </div>
