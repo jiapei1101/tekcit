@@ -28,97 +28,25 @@
         nav a:hover {
             background-color: #575757;
         }
-        .ticket-btn {
-            margin-top: 60px;
-            scroll-behavior: smooth;
-        }
-        .ticket-btn a {
-            padding: 8px 20px;
-            background-color: #3d6a6f;
-            border-radius: 15px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size:15px;
-            transition: background-color 0.3s ease-in-out;
-            text-decoration: none;
-        }
-
-        .ticket-btn a:hover {
-            background-color: #8481a3;
-        }
-        /* 場次資訊 */
-        .event-info {
-            padding: 30px;
+        /* 圖片容器 */
+        .image-container {
             text-align: center;
-        }
-        .event-info h2 {
-            font-size: 32px;
-            margin-bottom: 50px;
-        }
-        .event-card {
-            background-color: #e9e7ea;
             margin: 20px auto;
-            width: 80%;
-            max-width: 600px;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        .event-photo {
-            width: 300px; /* 控制圖片框架的寬度 */
-            height: auto;
-        }
-        .event-photo img {
-            width: 100%;
-            height: auto; /* 使圖片根據其原始比例自動縮放 */
-            border-radius: 8px; /* 圖片邊角略微圓滑，增加美觀 */
-        }
-        .event-details {
-            margin: 20px;
-            flex-grow: 1;
-            text-align: left;
-        }
-        .event-details p {
-            margin: 5px 0;
-        }
-        .details-btn {
-            padding: 10px;
-            background-color: #d8e2ed;
-            color: #000;
-            border: none;
-            cursor: pointer;
-        }
-        .details-btn:hover {
-            background-color: #85a6ca;
-            color: white;
-        }
-        a{
-          text-decoration: none;
-        }
-        a:hover{
-          text-decoration: none;
-        }
-        .coming-soon {
-            padding: 100px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #555;
-        }
-
         /* 版權區域 */
         .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 20px 0 20px;
-}
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -131,14 +59,16 @@
         <a href="LogIn.html">登入</a>
     </nav>
 
+    <!-- 座位圖區域 -->
+    <div class="image-container">
+        <h2>演唱會座位圖</h2>
+        <img src="座位圖(分區.jpg" alt="演唱會座位圖">
+    </div>
 
-
-  
-<!-- 版權區域 -->
-     <div class="footer">
-     © 2024 泰克希特購票系統
-     </div>
-
+    <!-- 版權區域 -->
+    <div class="footer">
+        © 2024 泰克希特購票系統
+    </div>
 
 </body>
 </html>
