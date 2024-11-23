@@ -34,11 +34,32 @@
         nav a:hover {
             background-color: #575757;
         }
+
+        /* 使用者資訊區域 */
+        .user-info {
+            display: inline-block;
+            float: right;
+            margin-right: 10px;
+            color: white;
+            padding: 14px;
+        }
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            vertical-align: middle;
+        }
+        .user-name {
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
         /* 圖片及選擇區域 */
         .main-content {
             display: flex;
             flex-grow: 1;
             padding: 20px;
+            margin-top: 60px; /* 留出導航欄的空間 */
         }
         .image-container {
             flex: 2;
@@ -83,6 +104,7 @@
         .selection-container ul li button:hover {
             background-color: #575757;
         }
+
         /* 版權區域 */
         .footer {
             background-color: #333;
@@ -94,6 +116,10 @@
             width: 100%;
         }
     </style>
+
+    <!-- 引入 user.js -->
+    <script src="user.js"></script>
+
     <script>
         let selectedArea = "";
 
@@ -122,6 +148,11 @@
         <a href="concert-poster.html">演唱會資訊</a>
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
+
+        <!-- 使用者資訊區域 -->
+        <div class="user-info" id="userInfo">
+            <!-- 使用者頭像與名稱將由 user.js 動態插入 -->
+        </div>
     </nav>
 
     <!-- 主內容區域 -->
