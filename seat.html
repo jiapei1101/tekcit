@@ -34,32 +34,13 @@
         nav a:hover {
             background-color: #575757;
         }
-
-        /* 使用者資訊區域 */
-        .user-info {
-            display: inline-block;
-            float: right;
-            margin-right: 10px;
-            color: white;
-            padding: 14px;
-        }
-        .avatar {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            vertical-align: middle;
-        }
-        .user-name {
-            vertical-align: middle;
-            margin-left: 8px;
-        }
-
         /* 圖片及選擇區域 */
         .main-content {
             display: flex;
             flex-grow: 1;
             padding: 20px;
             margin-top: 60px; /* 留出導航欄的空間 */
+            background:#fff;
         }
         .image-container {
             flex: 2;
@@ -115,6 +96,27 @@
             bottom: 0;
             width: 100%;
         }
+        .user-info {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            margin-left: auto;
+}
+
+        .user-info img {
+           width: 30px;
+           height: 30px;
+           border-radius: 50%;
+           margin-right: 10px;
+}
+
+.user-info span {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
     </style>
 
     <script>
@@ -135,28 +137,18 @@
                 alert('請先選擇一個區域！');
             }
         }
+       // 頁面加載後自動顯示使用者資訊
        window.onload = function() {
-      const storedUser = localStorage.getItem('emailPhone');
-      
-      // 檢查 localStorage 中是否有使用者資料
-      if (storedUser) {
-          // 動態新增頭像和名稱到選單欄
-          const nav = document.querySelector('nav');
-          const userInfo = document.createElement('div');
-          userInfo.classList.add('user-info');
-
-          // 假設這裡的頭像是固定圖片
-          userInfo.innerHTML = `
-              <img src="https://via.placeholder.com/30" alt="User Avatar">
-              <span>${storedUser}</span>
-          `;
-
-          nav.appendChild(userInfo);
-          console.log("已插入使用者資訊到頁面：", storedUser);
-      } else {
-          console.log("未登入，沒有使用者資訊");
-      }
-  };
+            const emailPhone = localStorage.getItem('emailPhone');
+            
+            if (emailPhone) {
+                console.log('接收到的 Email 或手機號碼：', emailPhone);
+                $('#email-phone-text').text(emailPhone);  // 使用 .text() 來設置使用者名稱
+            } else {
+                // 如果沒有登入資訊，隱藏頭像和名稱
+                $('.user-info').hide();
+            }
+        };
     </script>
 </head>
 <body>
@@ -168,6 +160,10 @@
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
 
+        <div class="user-info">
+        <img id="user-avatar" src="https://via.placeholder.com/30" alt="User Avatar">
+        <span id="email-phone-text"></span>
+        </div>
     <!-- 主內容區域 -->
     <div class="main-content">
         <!-- 座位圖區域 -->
