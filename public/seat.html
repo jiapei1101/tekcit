@@ -120,6 +120,25 @@
             bottom: 0;
             width: 100%;
         }
+          .user-info {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 2px solid #fff;
+        }
+
+        .user-info span {
+            margin-left: 10px;
+            font-size: 16px;
+            color: white;
+        }
     </style>
 
     <script>
@@ -142,6 +161,12 @@
                 alert('請先選擇一個區域！');
             }
         }
+         window.onload = function() {
+            console.log('接收到的 Email 或手機號碼：', emailPhone);
+         $('#email-phone-text').text(emailPhone); 
+            const userAvatar = 'https://via.placeholder.com/40'; // 頭像預設圖片
+            document.getElementById('userAvatar').src = userAvatar;
+        };
     </script>
 </head>
 <body>
@@ -152,6 +177,10 @@
             <a href="concert-poster.html">演唱會資訊</a>
             <a href="ticket-rules.html">購票說明</a>
             <a href="LogIn.html">登入</a>
+        </div>
+        <div class="user-info">
+            <span id="email-phone-text"></span>
+            <img id="userAvatar" alt="User Avatar">
         </div>
     </nav>
 
