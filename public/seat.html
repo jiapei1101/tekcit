@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰克希特購票系統</title>
+    <style>
+        /* 基本樣式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+            display: flex;
+            flex-direction: row;
+        }
+        /* 頂部選單 */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        /* 圖片及選擇區域 */
+        .main-content {
+            display: flex;
+            flex-grow: 1;
+            padding: 20px;
+            margin-top: 60px; /* 留出導航欄的空間 */
+            background: #fff;
+        }
+        .image-container {
+            flex: 2;
+            margin-right: 20px;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .selection-container {
+            flex: 1;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .selection-container h3 {
+            margin-bottom: 20px;
+        }
+        .selection-container ul {
+            list-style: none;
+            padding: 0;
+        }
+        .selection-container ul li {
+            margin-bottom: 10px;
+        }
+        .selection-container ul li button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .selection-container ul li button:hover {
+            background-color: #575757;
+        }
+
+        /* 版權區域 */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+
+    <script>
+        let selectedArea = "";
+
+        function selectArea(area) {
+            selectedArea = area;
+            alert(`你所選的是${area}`);
+        }
+
+        function confirmSeat() {
+            if (selectedArea) {
+                const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
+                if (confirm(confirmMessage)) {
+                    window.location.href = 'check.html';
+                }
+            } else {
+                alert('請先選擇一個區域！');
+            }
+        }
+       window.onload = function() {
+      const storedUser = localStorage.getItem('emailPhone');
+      
+      // 檢查 localStorage 中是否有使用者資料
+      if (storedUser) {
+          // 動態新增頭像和名稱到選單欄
+          const nav = document.querySelector('nav');
+          const userInfo = document.createElement('div');
+          userInfo.classList.add('user-info');
+
+          // 假設這裡的頭像是固定圖片
+          userInfo.innerHTML = `
+              <img src="https://via.placeholder.com/30" alt="User Avatar">
+              <span>${storedUser}</span>
+          `;
+
+          nav.appendChild(userInfo);
+          console.log("已插入使用者資訊到頁面：", storedUser);
+      } else {
+          console.log("未登入，沒有使用者資訊");
+      }
+  };
+    </script>
+</head>
+<body>
+
+    <!-- 頂部選單 -->
+    <nav>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
+
+    <!-- 主內容區域 -->
+    <div class="main-content">
+        <!-- 座位圖區域 -->
+        <div class="image-container">
+            <h2>演唱會座位圖</h2>
+            <img src="https://raw.githubusercontent.com/jiapei1101/tekcit/refs/heads/main/IMG/%E5%BA%A7%E4%BD%8D%E5%9C%96(%E5%88%86%E5%8D%80.jpg" alt="演唱會座位圖">
+        </div>
+
+        <!-- 選擇區域 -->
+        <div class="selection-container">
+            <h3>選擇區域</h3>
+            <ul>
+                <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
+                <li><button onclick="selectArea('A 區')">A 區</button></li>
+                <li><button onclick="confirmSeat()">確認座位</button></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 版權區域 -->
+    <div class="footer">
+        © 2024 泰克希特購票系統
+    </div>
+
+</body>
+</html>
