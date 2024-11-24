@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購票守則</title>
+    <style>
+        /* 通用樣式 */
+        body {
+            font-family: "Arial", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2 {
+            font-family: "Georgia", serif;
+            color: #444;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin: 40px 0 20px;
+            color: #222;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin: 20px 0 10px;
+            border-left: 5px solid #333;
+            padding-left: 10px;
+            color: #444;
+        }
+
+        p {
+            margin: 0 0 10px;
+        }
+
+        /* 自訂項目符號樣式 */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            margin: 0;
+        }
+
+        ul li {
+            background: #fff;
+            padding: 10px 15px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        ul li::before {
+            content: "❣︎";
+            color: #e74c3c;
+            font-size: 1.2em;
+            margin-right: 8px;
+        }
+
+        /* 頂部選單樣式 */
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        /* 主要內容樣式 */
+        .content {
+            max-width: 800px;
+            margin: 100px auto 40px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 版權區域 */
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
+    </nav>
+
+    <div class="content">
+        <h1>購票守則📜</h1>
+        <h2>1. 票務購買：</h2>
+        <ul>
+            <li>所有門票僅可於官方平台或授權票務商處購買，避免購買來源不明的票券。</li>
+            <li>購票時請仔細核對場次、日期及座位區域，以確保符合需求。訂單一經確認，將無法更改或退款🙇‍♀️。</li>
+        </ul>
+
+        <h2>2. 票券使用：</h2>
+        <ul>
+            <li>所有票券為電子票，請於活動當日攜帶有效身份證件以便查驗。</li>
+            <li>每張票僅限一人入場，禁止重複使用或轉讓。</li>
+        </ul>
+
+        <h2>3. 進場規則：</h2>
+        <ul>
+            <li>活動當日，請依票面座位區域指示入場，並配合現場工作人員的指引。</li>
+            <li>為確保他人觀賞權益，請勿於活動期間站立、跳躍或遮擋他人視線。</li>
+        </ul>
+
+        <h2>4. 退票政策：</h2>
+        <ul>
+            <li>除非因主辦單位取消活動，否則一律不受理退票申請。如遇不可抗力因素導致延期，票券自動轉為新日期有效。</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        © 2024 泰克希特購票系統
+    </div>
+</body>
+</html>
