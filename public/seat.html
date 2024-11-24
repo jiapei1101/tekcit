@@ -12,8 +12,10 @@
             padding: 0;
             scroll-behavior: smooth;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+            background-color: #f9f9f9;
         }
+
         /* 頂部選單 */
         nav {
             background-color: #333;
@@ -23,30 +25,39 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         nav a {
             display: inline-block;
             color: white;
-            padding: 14px 20px;
+            padding: 10px 20px;
             text-decoration: none;
             transition: background-color 0.3s ease-in-out;
         }
+
         nav a:hover {
             background-color: #575757;
         }
 
-        /* 圖片及選擇區域 */
+        /* 主內容 */
         .main-content {
             display: flex;
             flex-grow: 1;
             padding: 20px;
-            margin-top: 60px; /* 留出導航欄的空間 */
-            background: #fff;
+            margin-top: 70px; /* 留出導航欄的空間 */
+            padding-bottom: 100px; /* 留出頁腳的空間 */
         }
+
         .image-container {
             flex: 2;
             margin-right: 20px;
         }
+
         .image-container img {
             max-width: 100%;
             height: auto;
@@ -54,24 +65,35 @@
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .selection-container {
             flex: 1;
-            background-color: #f9f9f9;
+            background-color: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .selection-container h3 {
             margin-bottom: 20px;
         }
+
+        .selection-container p {
+            margin-bottom: 15px;
+            font-size: 1em;
+            color: #444;
+        }
+
         .selection-container ul {
             list-style: none;
             padding: 0;
         }
+
         .selection-container ul li {
             margin-bottom: 10px;
         }
+
         .selection-container ul li button {
             display: block;
             width: 100%;
@@ -83,6 +105,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         .selection-container ul li button:hover {
             background-color: #575757;
         }
@@ -104,7 +127,8 @@
 
         function selectArea(area) {
             selectedArea = area;
-            alert(`你所選的是${area}`);
+            // 更新頁面上顯示的選擇
+            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
         }
 
         function confirmSeat() {
@@ -117,38 +141,18 @@
                 alert('請先選擇一個區域！');
             }
         }
-       window.onload = function() {
-      const storedUser = localStorage.getItem('emailPhone');
-      
-      // 檢查 localStorage 中是否有使用者資料
-      if (storedUser) {
-          // 動態新增頭像和名稱到選單欄
-          const nav = document.querySelector('nav');
-          const userInfo = document.createElement('div');
-          userInfo.classList.add('user-info');
-
-          // 假設這裡的頭像是固定圖片
-          userInfo.innerHTML = `
-              <img src="https://via.placeholder.com/30" alt="User Avatar">
-              <span>${storedUser}</span>
-          `;
-
-          nav.appendChild(userInfo);
-          console.log("已插入使用者資訊到頁面：", storedUser);
-      } else {
-          console.log("未登入，沒有使用者資訊");
-      }
-  };
     </script>
 </head>
 <body>
-
     <!-- 頂部選單 -->
     <nav>
-        <a href="index.html">泰克希特購票系統</a>
-        <a href="concert-poster.html">演唱會資訊</a>
-        <a href="ticket-rules.html">購票說明</a>
-        <a href="LogIn.html">登入</a>
+        <div>
+            <a href="index.html">泰克希特購票系統</a>
+            <a href="concert-poster.html">演唱會資訊</a>
+            <a href="ticket-rules.html">購票說明</a>
+            <a href="LogIn.html">登入</a>
+        </div>
+    </nav>
 
     <!-- 主內容區域 -->
     <div class="main-content">
@@ -161,6 +165,7 @@
         <!-- 選擇區域 -->
         <div class="selection-container">
             <h3>選擇區域</h3>
+            <p id="selected-area">您尚未選擇區域</p> <!-- 用來顯示選擇結果 -->
             <ul>
                 <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
                 <li><button onclick="selectArea('A 區')">A 區</button></li>
@@ -173,6 +178,5 @@
     <div class="footer">
         © 2024 泰克希特購票系統
     </div>
-
 </body>
 </html>
