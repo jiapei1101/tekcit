@@ -66,6 +66,8 @@
 <script>
   $(document).ready(function () {
     const emailPhone = localStorage.getItem('emailPhone');
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedArea = urlParams.get('selectedArea');
 
     if (emailPhone) {
         console.log('接收到的 Email 或手機號碼：', emailPhone);
@@ -76,6 +78,7 @@
         alert('未檢測到登入信息，請重新登入！');
         window.location.href = 'LogIn.html';
     }
+    $('#seat-text').text(selectedArea);
 
     if ($('#seat-text').text().replace(/\s/g, '') == 'MD203') {
       $('#opt2').prop('disabled', true);
