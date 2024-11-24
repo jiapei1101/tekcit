@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰克希特購票系統 - 登入</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://i.pinimg.com/736x/ce/de/0d/cede0d0f4b5c74da45f7db7077a867da.jpg');
+        }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 25px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        /* 登入區塊樣式 */
+        .login-container {
+            max-width: 400px;
+            margin: 150px auto;
+            padding: 50px;
+            background-color: #f9f9f9;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .login-options a {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #ddd;
+            text-align: center;
+            line-height: 60px;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 陰影效果 */
+        }
+        .login-options a img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            margin-top: 5px;
+        }
+        .login-options a:hover {
+            background-color: #bbb;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* 加強浮凸效果 */
+        }
+        .login-options img:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* 浮凸效果 */
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .separator hr {
+            flex-grow: 1;
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 0 10px;
+        }
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .login-form input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 16px;
+            width: 100%;
+            box-sizing: border-box;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 輸入框陰影 */
+            transition: box-shadow 0.3s ease;
+        }
+
+        .login-form input:focus {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2); /* 聚焦時的陰影效果 */
+            outline: none;
+        }
+
+        .login-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 按鈕陰影 */
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .login-form button:hover {
+            background-color: #555;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+        }
+        .footer {
+            background-color: #fff;
+            color: #524B4D;
+            text-align: center;
+            padding: 20px;
+            margin-bottom:0;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .message.success {
+            color: green;
+        }
+        .message.error {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">  
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
+    </nav>
+
+    <!-- 登入介面 -->
+    <div class="login-container">
+        <h2>登入帳號</h2>
+        <div class="login-options">
+            <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAWpJREFUaEPtl2FugkAQhWf2JPQGeAM9iUKaFE6hngKbNKgnKTeAG5STOI0iiW7BBXZaFjv7x8SMu3xv3ptFhIkvnPjzgwCM3UHpwNN3wF8lHii1VEAeAcwBwLtCl5dPgpKQjkUaH4aI8asW8sP3NQJtTA9GQIFzALNg9wl4Udy4nAPoqnxN5hTA2fOo8Mso+02BWwBhskLA/YQBHgSXICOioDjE1QRiWOxT6FF48zRiP499w1m4O/u/nvW3Gpd5Gr0wiH63xd8BEGT5PloIgKaAdEC3RGsGXLOQX837dYOnmwJclzWOT5twD7bQFaDXhdUWYJvx6gKA1XgdH8AyG6MDEOCmSN+2Q++HfwzwmszVCZe6ctrfxrtXCQTI9PqTomPxEf/4vmtHBneg7YDJ3AMC0NUjhjqx0GTfhSQDkoFKAQmxhNgyC2IhsZBYyFKBp7MQsx7G7dinkPFE5gIBYBa093bSgd6SMf/gG/o96DGny80LAAAAAElFTkSuQmCC"/></a><!-- Facebook icon -->
+            <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAZxJREFUWEftl1GOgjAQhmfavcfiIWR9kESPsZFN1pMoJ8HNajyGJPhg9BDLRXA2RTAFSgsoxt3Ak0nbma//3+lUhCf78Ml4oAcyOdIr9PcV+h6NJyxGC5BeGXv5ej8EkWlXTcc3Q+dTrGGcB8X4uTMkYPCMOzkBAi1nx73XNKlq/sYeLwhwKY9xxgcyVA5oPXR2gDApBUNYceTeLWpVxiYI3FM4zXLmgWyHNEpEnPFpU6jtaGLFcewrN5omc4/hlaMJULIcCeazU7iqY6E4K4Tgm+beBHShMltYaZGC7nagS1ClhUlhxLjQWVRkuhdQyUJVFZnsEuN3BcoshDNYTVSRQe8PVEcGzZx/AZS1D6ulGNr1bRSK3GM4WL85PhAkfaj2l97Ea9v5AQDlhloDCYi0kgSUUS25D3YGJKDSJixu4CqoiBjNPw77IFOyU6BrEpWFhWb5UKCihbqnykMUynYvLBS/ZYuKh/6hQHUqrgcyqdRWoarLK7kYTUl14xqgXOzyI1/9lukGiCAgTp5cDP0/V5PtvUK9QiYFTOO/EC0ENHorvMAAAAAASUVORK5CYII="/></a> <!-- Email icon -->
+            <a href="#"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2NJREFUaEPtmV1uGjEQx2cIPUfJQ5B6ipCTBBQq9RV6gCQHKLxGKlHISUJOUYk8ZHuOAFPZXsMuO7bH3qURErwgJf76zYf/4wHhyD945OeHE8Bne7AxD/yZ/ui0YXVNQB0g7ID6Bv2dGUjMAClD9Q3wejGaLZqArwWwPTRR3xw25kMZIs5X0H7+NnrIIWPm52aJn2JmvE2Ht0Rwlzp/N8+AXIxm9ylrRXvgbTrsEcFLymb+OWkgUQDLX9/7gPTU/OF3KyLCXYw3xADL6c0TEPYPefjC2ovueHYl2UsEsJwMVcj0JAs2NgZp3h09DkLrBQH+R9i4DikJJy+AJ2EXiKBujUtKukLtkU3iKl0wazG3GuGg+/O3GsN+vADLyc07d78jwpUVop0W7G+uBEyLlv2UQnDfumqdM1q9V09JWXf8eB4N4Aud7nhWAc9BOitoZy5hsmNcKrycDIk3szsfnB5wWV9twAGEkk3yf/eelK3xyxVnGBYglLhrbJ/XkX8XjNMDqpJy6AMPELg2izkgsaxkTFjh+VxwAfCxaE4iFhnJwYtjQmLJGa4CEAqfQ1jfQrhvIjOCC6MqgL9kOJj1LURA9Sv7xwEI5T02dIrjA2W6AMCXwAFVrHNwO9efzNVErnrAob56g2MHkBRXdb0QukT2RZTxgLt0/nwAUQj5an9/YVXX+mp+QAvCSRx6rB9SBzSAq6DTQlAt6iohFJT0A16lIeNxlwhbFvN1uQ0QyoBa975HRkooBQ0HAFwRmVTMqW5bnV7OPmCohLDjuTKeBahaY/u6Kj/skeYI+JzaJnS/5hgfOjSIBTAW+XjZPifzuM8tpfpCex0KygBhAZvW67p1tvC9FdQ9jy36SqTXEHc6XI8o94us0sQyV6gbQku19/3qn+vOHJ/+OAHYzUqeKHhom9/+DoIaJknWMkrio14twiWX1QH9P/i4BRMKIO00SxPWQoR0J6WxVftN4BWrgvklpUsQIHd7qZUuWdinBUIAkaFEAByE1QLa4F9s6V9hLqVd5SBAhNqLAXiIsp2l7ZaU9onLo1EAhcRmtICXem5jHkCr+yBWFKMBLIT+QW+vsZvmgXplSRKAtaq+EjfrHiBdq79Jf5QwNT/0mqinagGkVJ1NzzkBNG3R2PVOHoi1WNPj/wFrVjRP7sllrQAAAABJRU5ErkJggg=="/></a> <!-- GitHub icon -->
+        </div>
+
+        <div class="separator">
+            <hr>
+            <span>or</span>
+            <hr>
+        </div>
+
+        <div class="login-form">
+            <input type="text" id="emailPhone" placeholder="Email/Phone number">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">登入</button>
+        </div>
+        <div id="message" class="message"></div>
+    </div>
+
+    <script>
+      // 登入功能
+      function login() {
+          const emailPhone = document.getElementById('emailPhone').value;
+          const password = document.getElementById('password').value;
+          const message = document.getElementById('message');
+
+          // 檢查輸入的格式是否符合需求
+          if (!emailPhone.includes('@') && !/^\d{10}$/.test(emailPhone)) {
+              message.textContent = '請輸入正確的 Email 或 10 位手機號碼';
+              message.className = 'message error';
+              return;
+          }
+
+          if (password.length < 6) {
+              message.textContent = '密碼需至少 6 位數';
+              message.className = 'message error';
+              return;
+          }
+
+          // 模擬登入成功
+          message.textContent = '登入成功！';
+          message.className = 'message success';
+          localStorage.setItem('userLoggedIn', 'true'); 
+          localStorage.setItem('emailPhone', emailPhone);
+
+          setTimeout(() => {
+                window.location.href = 'seat.html'; // 登入成功後跳轉的頁面
+            }, 1000);
+      }
+  </script>
+    <div class="footer">
+    © 2024 泰克希特購票系統
+    </div>
+</body>
+</html>
