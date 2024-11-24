@@ -25,6 +25,9 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -39,6 +42,27 @@
 
         nav a:hover {
             background-color: #575757;
+        }
+
+        /* 用來顯示使用者名稱與頭像的區域 */
+        .user-info {
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .user-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 10px;
+            border: 2px solid #fff;
+        }
+
+        .user-info span {
+            margin-left: 10px;
+            font-size: 16px;
+            color: white;
         }
 
         /* 主內容 */
@@ -139,6 +163,16 @@
                 alert('請先選擇一個區域！');
             }
         }
+
+        // 在頁面加載時顯示使用者名稱和頭像
+        window.onload = function() {
+            const username = localStorage.getItem('username') || '使用者';
+            const userAvatar = 'https://via.placeholder.com/40'; // 頭像預設圖片
+
+            // 更新頭像和名稱
+            document.getElementById('usernameDisplay').textContent = username;
+            document.getElementById('userAvatar').src = userAvatar;
+        };
     </script>
 </head>
 <body>
@@ -149,6 +183,11 @@
             <a href="concert-poster.html">演唱會資訊</a>
             <a href="ticket-rules.html">購票說明</a>
             <a href="LogIn.html">登入</a>
+        </div>
+        <!-- 使用者頭像與名稱 -->
+        <div class="user-info">
+            <span id="usernameDisplay"></span>
+            <img id="userAvatar" alt="User Avatar">
         </div>
     </nav>
 
