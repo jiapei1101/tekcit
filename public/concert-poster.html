@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>周杰倫演唱會</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+      function checkLoginStatus(event) {
+            // 讀取 localStorage 中的登入狀態
+            var isLoggedIn = localStorage.getItem('userLoggedIn');
+          if (!isLoggedIn) {
+              event.preventDefault(); 
+              // 顯示提示訊息
+              alert('請先登入！');
+              // 跳轉到登入頁面
+              window.location.href = 'LogIn.html';
+          } else {
+              // 已登入，跳轉到購票頁面
+              window.location.href = 'seat.html';
+          }
+      }
+  </script>
+</head>
+    <body class="poster-page">
+<body>
+
+    <!-- 頂部選單 -->
+    <nav>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
+    </nav>
+
+    <main class="full-width"> <!-- 新增 .full-width 類別 -->
+        <div class="poster-container">
+            <img src="https://github.com/jiapei1101/tekcit/blob/main/IMG/%E9%A4%85%E8%BC%AA.jpg?raw=true">
+            <h2>周杰倫 嘉年華 世界巡迴演唱會</h2>
+        </div>
+        <section class="section-info">
+            <h3>節目介紹</h3>
+            <p>
+                周杰倫Jay Chou<br>
+               《嘉年華》世界巡迴演唱會<br>
+                2024頂級鉅獻<br><br>
+                創意無與倫比、製作升級進階<br>
+                顛覆宇宙所有可能與想像！<br><br>
+                每首歌都是經典！<br>
+                千呼萬喚、眾所期待的一場演唱會<br>
+                即將登場
+            </p>
+        </section>
+        <div class="event-details">
+                <p>周杰倫 嘉年華 世界巡迴演唱會</p>
+                <p>演出日期：<br>2024.12.05 (四) 19:30</p>
+                <p>場地：臺北大巨蛋</p>
+                <p>票價：6880 / 1880</p>
+                <p>售票日期：2024 年 12 月 3 日（三）開賣</p>
+        </div>
+        <div class="purchase-btn-container">
+            <button class="buy-button"><a href="javascript:void(0);" class="link" onclick="checkLoginStatus(event)">立即購票</a>
+            </button>
+        </div>
+    </main>
+    <!-- 版權區域 -->
+    <div class="footer">
+        © 2024 泰克希特購票系統
+    </div>
+</body>
+</html>
