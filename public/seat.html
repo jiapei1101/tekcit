@@ -25,6 +25,9 @@
             top: 0;
             width: 100%;
             z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
@@ -118,6 +121,28 @@
             width: 100%;
         }
     </style>
+
+    <script>
+        let selectedArea = "";
+
+        function selectArea(area) {
+            selectedArea = area;
+            // 更新頁面上顯示的選擇
+            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
+        }
+
+        function confirmSeat() {
+            if (selectedArea) {
+                const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
+                if (confirm(confirmMessage)) {
+                    const check = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
+                    window.location.href = check;
+                }
+            } else {
+                alert('請先選擇一個區域！');
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- 頂部選單 -->
@@ -145,12 +170,11 @@
             <ul>
                 <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
                 <li><button onclick="selectArea('A 區')">A 區</button></li>
-                
                 <li><button onclick="confirmSeat()">確認座位</button></li>
             </ul>
         </div>
     </div>
-    
+
     <!-- 版權區域 -->
     <div class="footer">
         © 2024 泰克希特購票系統
