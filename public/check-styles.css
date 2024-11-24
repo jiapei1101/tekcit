@@ -1,0 +1,151 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* 讓主內容區域填滿多餘空間 */
+}
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+nav {
+    background-color: #333;
+    overflow: hidden;
+    text-align: center;
+}
+nav a {
+    display: inline-block;
+    color: white;
+    padding: 25px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s ease-in-out;
+}
+nav a:hover {
+    background-color: #575757;
+}
+
+.event-card {
+    background-color: #e9e7ea;
+    margin: 20px auto;
+    width: 80vw;
+    height: 20vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+}
+.event-photo {
+    margin: 0 20px 0 20px;
+    width: 60%; /* 控制圖片框架的寬度 */
+    height: 80%;
+    overflow: hidden;
+}
+.event-photo img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%; /* 使圖片根據其原始比例自動縮放 */
+    border-radius: 8px; /* 圖片邊角略微圓滑，增加美觀 */
+}
+.event-details {
+    margin-right: 20px;
+    flex-grow: 2;
+    text-align: left;
+    :first-child{
+        font-weight: bold;
+    }
+}
+.event-details p {
+    margin: 5px 0;
+}
+
+/*  */
+.form-w{
+    margin: 30px;
+    background: #e9e7ea;
+    border-radius: 20px;
+    border: 1px solid #1e1e1e96;
+    width: 80vw;
+    align-self: center;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.email-phone{
+    color: #1e1e1e96;
+    background-color: #f4f4f46b;
+    margin: 30px;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+    border: 1px solid #1e1e1e96;
+}
+.seat{
+    color: #1e1e1e96;
+    background-color: #f4f4f46b;
+    padding: 5px;
+    border-radius: 10px;
+    width: 60%;
+    border: 1px solid #1e1e1e96;
+    margin-right: 5%;
+}
+.sel{
+    margin: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    justify-content: center;
+}
+.sel-quantity{
+    width: 15%;
+}
+#quantity{
+    background: #f4f4f46b;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    border: 1px solid #1e1e1e96;
+}
+.submit-w{
+    margin: 30px;
+    width: 10%;
+}
+.submit{
+    background: #d8e2ed;
+    padding: 8px;
+    border-radius: 10px;
+    width: 100%;
+    font-weight: bold;
+    border: none;
+}
+.submit:hover{
+    background: #85a6ca;
+    color: white;
+}
+
+/*  */
+.footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+.link {
+    color: black;
+}
+.link:hover {
+    color: white;
+}
