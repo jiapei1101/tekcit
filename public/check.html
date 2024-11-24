@@ -9,7 +9,7 @@
 <body>
   <!-- 頂部選單 -->
   <nav>
-    <a href="index.html">泰克希特購票系統</a>
+    <a href="/public/index.html">泰克希特購票系統</a>
     <a href="concert-poster.html">演唱會資訊</a>
     <a href="ticket-rules.html">購票說明</a>
     <a href="LogIn.html">登入</a>
@@ -58,7 +58,7 @@
   <!-- 版權區域 -->
   <div class="footer">
     © 2024 泰克希特購票系統
-  </div>
+  </div> 
 </body>
   
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -66,6 +66,8 @@
 <script>
   $(document).ready(function () {
     const emailPhone = localStorage.getItem('emailPhone');
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedArea = urlParams.get('selectedArea');
 
     if (emailPhone) {
         console.log('接收到的 Email 或手機號碼：', emailPhone);
@@ -76,6 +78,7 @@
         alert('未檢測到登入信息，請重新登入！');
         window.location.href = 'LogIn.html';
     }
+    $('#seat-text').text(selectedArea);
 
     if ($('#seat-text').text().replace(/\s/g, '') == 'MD203') {
       $('#opt2').prop('disabled', true);
