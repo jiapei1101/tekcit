@@ -16,7 +16,6 @@
             background-color: #f9f9f9;
         }
 
-        /* 頂部選單 */
         nav {
             background-color: #333;
             overflow: hidden;
@@ -25,15 +24,11 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             padding: 10px 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         nav a {
-            display: inline-block;
             color: white;
             padding: 10px 20px;
             text-decoration: none;
@@ -44,18 +39,11 @@
             background-color: #575757;
         }
 
-        /* 主內容 */
         .main-content {
             display: flex;
             flex-grow: 1;
             padding: 20px;
-            margin-top: 70px; /* 留出導航欄的空間 */
-            padding-bottom: 100px; /* 留出頁腳的空間 */
-        }
-
-        .image-container {
-            flex: 2;
-            margin-right: 20px;
+            margin-top: 70px;
         }
 
         .image-container img {
@@ -63,7 +51,6 @@
             height: auto;
             border: 2px solid #ddd;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .selection-container {
@@ -73,25 +60,6 @@
             border-radius: 5px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .selection-container h3 {
-            margin-bottom: 20px;
-        }
-
-        .selection-container p {
-            margin-bottom: 15px;
-            font-size: 1em;
-            color: #444;
-        }
-
-        .selection-container ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .selection-container ul li {
-            margin-bottom: 10px;
         }
 
         .selection-container ul li button {
@@ -110,7 +78,6 @@
             background-color: #575757;
         }
 
-        /* 版權區域 */
         .footer {
             background-color: #333;
             color: white;
@@ -120,68 +87,41 @@
             bottom: 0;
             width: 100%;
         }
-          .user-info {
-            display: flex;
-            align-items: center;
-            color: white;
+
+        /* 模態視窗樣式 */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            text-align: center;
         }
 
-        .user-info img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 10px;
-            border: 2px solid #fff;
-        }
-
-        .user-info span {
-            margin-left: 10px;
-            font-size: 16px;
-            color: white;
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
         }
     </style>
-
-    <script>
-        let selectedArea = "";
-
-        function selectArea(area) {
-            selectedArea = area;
-            // 更新頁面上顯示的選擇
-            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
-        }
-
-        function confirmSeat() {
-            if (selectedArea) {
-                const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
-                if (confirm(confirmMessage)) {
-                    const check = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
-                    window.location.href = check;
-                }
-            } else {
-                alert('請先選擇一個區域！');
-            }
-        }
-         window.onload = function() {
-            console.log('接收到的 Email 或手機號碼：', emailPhone);
-         $('#email-phone-text').text(emailPhone); 
-            const userAvatar = 'https://via.placeholder.com/40'; // 頭像預設圖片
-            document.getElementById('userAvatar').src = userAvatar;
-        };
-    </script>
 </head>
 <body>
     <!-- 頂部選單 -->
     <nav>
-        <div>
-            <a href="index.html">泰克希特購票系統</a>
-            <a href="concert-poster.html">演唱會資訊</a>
-            <a href="ticket-rules.html">購票說明</a>
-            <a href="LogIn.html">登入</a>
-        </div>
-        <div class="user-info">
-            <span id="email-phone-text"></span>
-            <img id="userAvatar" alt="User Avatar">
-        </div>
+        <a href="index.html">泰克希特購票系統</a>
+        <a href="concert-poster.html">演唱會資訊</a>
+        <a href="ticket-rules.html">購票說明</a>
+        <a href="LogIn.html">登入</a>
     </nav>
 
     <!-- 主內容區域 -->
@@ -195,14 +135,56 @@
         <!-- 選擇區域 -->
         <div class="selection-container">
             <h3>選擇區域</h3>
-            <p id="selected-area">您尚未選擇區域</p> <!-- 用來顯示選擇結果 -->
+            <p id="selected-area">您尚未選擇區域</p>
             <ul>
                 <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
                 <li><button onclick="selectArea('A 區')">A 區</button></li>
+                <li><button class="details-btns">地底通道</button></li>
                 <li><button onclick="confirmSeat()">確認座位</button></li>
             </ul>
         </div>
     </div>
+
+    <!-- 模態視窗 -->
+    <div id="modal">
+        <p>抱歉，地底通道為無效區域，請選擇 VIP 區或 A 區！</p>
+        <button onclick="closeModal()">確定</button>
+    </div>
+    <div id="overlay"></div>
+
+    <script>
+        let selectedArea = "";
+
+        function selectArea(area) {
+            selectedArea = area;
+            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
+        }
+
+        function confirmSeat() {
+            if (selectedArea) {
+                const confirmMessage = `你所選的是 ${selectedArea}，是否確認座位？`;
+                if (confirm(confirmMessage)) {
+                    window.location.href = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
+                }
+            } else {
+                alert('請先選擇一個區域！');
+            }
+        }
+
+        function showModal() {
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('overlay').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        // 綁定地底通道按鈕事件
+        const soldOutButton = document.querySelector('.details-btns');
+        soldOutButton.addEventListener('click', showModal);
+    </script>
 
     <!-- 版權區域 -->
     <div class="footer">
