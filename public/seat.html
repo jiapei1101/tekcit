@@ -141,29 +141,34 @@
             bottom: 0;
             width: 100%;
         }
+
+         /* 模態視窗 */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1001;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
     </style>
 
     <script>
-        let selectedArea = "";
-
-        function selectArea(area) {
-            selectedArea = area;
-            // 更新頁面上顯示的選擇
-            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
-        }
-
-        function confirmSeat() {
-            if (selectedArea) {
-                const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
-                if (confirm(confirmMessage)) {
-                    const check = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
-                    window.location.href = check;
-                }
-            } else {
-                alert('請先選擇一個區域！');
-            }
-        }
-
         // 在頁面加載時顯示使用者名稱和頭像
         window.onload = function() {
             const username = localStorage.getItem('username') || '使用者';
@@ -206,11 +211,44 @@
             <ul>
                 <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
                 <li><button onclick="selectArea('A 區')">A 區</button></li>
+                <li><button onclick="showInvalidSelection()">地底通道</button></li>
                 <li><button onclick="confirmSeat()">確認座位</button></li>
             </ul>
         </div>
     </div>
 
+    <!-- 模態視窗 -->
+    <div id="modal">
+        <p>地底通道為無效選擇，請選擇 VIP 區或 A 區。</p>
+        <button onclick="closeModal()">重新選擇</button>
+    </div>
+    <div id="overlay"></div>
+
+    <script>
+        let selectedArea = "";
+
+        function selectArea(area) {
+            selectedArea = area;
+            document.getElementById("selected-area").textContent = `您選擇的區域：${selectedArea}`;
+        }
+
+        function confirmSeat() {
+            if (selectedArea) {
+                alert(`您選擇的是 ${selectedArea}，已確認座位。`);
+            } else {
+                alert('請先選擇一個區域！');
+            }
+        }
+
+        function showInvalidSelection() {
+            document.getElementById("modal").style.display = 'block';
+            document.getElementById("overlay").style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = 'none';
+            document.getElementById("overlay").style.display = 'none';
+        }
     <!-- 版權區域 -->
     <div class="footer">
         © 2024 泰克希特購票系統
