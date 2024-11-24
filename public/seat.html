@@ -118,47 +118,6 @@
             width: 100%;
         }
     </style>
-
-    <script>
-        let selectedArea = "";
-
-        function selectArea(area) {
-            selectedArea = area;
-            // 更新頁面上顯示的選擇
-            document.getElementById("selected-area").textContent = 您選擇的區域：${selectedArea};
-        }
-
-        function confirmSeat() {
-            if (selectedArea) {
-                const confirmMessage = 你所選的是${selectedArea}，是否確認座位？;
-                if (confirm(confirmMessage)) {
-                    const check = check.html?selectedArea=${encodeURIComponent(selectedArea)};
-                    window.location.href = check;
-                }
-            } else {
-                alert('請先選擇一個區域！');
-            }
-        }
-        let selectedArea2 = "";
-
-        function selectArea2(area) {
-            selectedArea = area;
-            // 更新頁面上顯示的選擇
-            document.getElementById("selected-area").textContent = 您選擇的區域：${selectedArea2};
-        }
-
-        function confirmSeat2() {
-            if (selectedArea) {
-                const confirmMessage = 你所選的是${selectedArea2}，是否確認座位？;
-                if (confirm(confirmMessage)) {
-                    const check = check.html?selectedArea=${encodeURIComponent(selectedArea2)};
-                    window.location.href = check;
-                }
-            } else {
-                alert('請先選擇一個區域！');
-            }
-        }
-    </script>
 </head>
 <body>
     <!-- 頂部選單 -->
@@ -186,37 +145,12 @@
             <ul>
                 <li><button onclick="selectArea('VIP 區')">VIP 區</button></li>
                 <li><button onclick="selectArea('A 區')">A 區</button></li>
-                <li><button onclick="selectArea2('地底通道')"class=details-btns>地底通道</button></li>
+                
                 <li><button onclick="confirmSeat()">確認座位</button></li>
             </ul>
         </div>
     </div>
-    <!-- 模態視窗 -->
-    <div id="modal">
-        <p>抱歉，該票卷已售完！</p>
-        <button onclick="closeModal()">確定</button>
-    </div>
-    <div id="overlay"></div>
-
-    <script>
-        // 顯示模態視窗的函式
-        function showModal() {
-            document.getElementById('modal').style.display = 'block';
-            document.getElementById('overlay').style.display = 'block';
-        }
-
-        // 關閉模態視窗的函式
-        function closeModal() {
-            document.getElementById('modal').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none';
-        }
-
-        // 為已售完按鈕綁定點擊事件
-        const soldOutButtons = document.querySelectorAll('.details-btns');
-        soldOutButtons.forEach(button => {
-            button.addEventListener('click', showModal);
-        });
-
+    
     <!-- 版權區域 -->
     <div class="footer">
         © 2024 泰克希特購票系統
