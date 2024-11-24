@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="check-styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>泰克希特購票系統</title>
+</head>
+<body>
+  <!-- 頂部選單 -->
+  <nav>
+    <a href="index.html">泰克希特購票系統</a>
+    <a href="concert-poster.html">演唱會資訊</a>
+    <a href="ticket-rules.html">購票說明</a>
+    <a href="LogIn.html">登入</a>
+  </nav>
+
+  <main>
+    <div class="event-card">
+      <div class="event-photo">
+        <img src="https://github.com/jiapei1101/tekcit/blob/main/IMG/餅倫.jpg?raw=true">
+      </div>
+      <div class="event-details">
+        <p>周杰倫演唱會</p>
+        <p>2024年12月5日</p>
+        <p>地點:台北大巨蛋</p>
+      </div>
+    </div>
+    
+    <div class="form-w">
+      <form id="google-form" class="form">
+        <div class="email-phone">
+          <label id="email-phone-text"></label>
+        </div>
+        
+        <div class="sel">
+          <div class="seat">
+            <label id="seat-text">MD203</label>
+          </div>
+          <div class="sel-quantity">
+            <select id="quantity">
+              <option value="" selected disabled>請選擇購買張數</option>
+              <option value="1" id="opt1">1</option>
+              <option value="2" id="opt2">2</option>
+              <option value="3" id="opt3">3</option>
+              <option value="4" id="opt4">4</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="submit-w">
+          <button class="submit"> 送出 </button>
+        </div>
+      </form>
+    </div>
+  </main>
+  
+  <!-- 版權區域 -->
+  <div class="footer">
+    © 2024 泰克希特購票系統
+  </div>
+</body>
+  
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+  $(document).ready(function () {
+    const emailPhone = localStorage.getItem('emailPhone');
+
+    if (emailPhone) {
+        console.log('接收到的 Email 或手機號碼：', emailPhone);
+        $('#email-phone-text').text(emailPhone);  // 使用 .text() 來設置內容
+    }
+    else {
+        console.log('未檢測到登入信息，請返回登入頁面');
+        alert('未檢測到登入信息，請重新登入！');
+        window.location.href = 'LogIn.html';
+    }
+
+    if ($('#seat-text').text().replace(/\s/g, '') == 'MD203') {
+      $('#opt2').prop('disabled', true);
+      $('#opt3').prop('disabled', true);
+      $('#opt4').prop('disabled', true);
+    }
+});
+  
+  let isSubmitting = false;
+  const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+  var limit_vip = 0;
+  var limit_a = 0;
+  var limit_md203 = 0;
+  fetch(uri)
+    .then(res => res.json())
+    .then(res => {
+      console.log(res)
+      limit_vip= res.values[1][1];
+      limit_a= res.values[1][2];
+      limit_md203= res.values[1][3];
+    })
+
+  function submitBtn(){
+        if ($('#quantity').val()) {//檢查必填欄位是否為空
+          $.ajax({
+            //<form action=" url在這 ">
+            url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdsFUPnpbBLEPfvpjHoMHc8pCr1mPjtRuizncStj5rarCWSiw/formResponse",
+            crossDomain: true,//解決跨網域CORS的問題
+            data: {// entry.xxxxx 這些需要填寫您表單裡面的值，與其相互對應
+              "entry.768916926": $('#email-phone-text').text().replace(/\s/g, ''), //電子郵件or手機
+              "entry.1218460682": $('#seat-text').text().replace(/\s/g, ''), //座位區
+              "entry.626747452": $('#quantity').val() //張數
+            },
+            type: "POST",
+            dataType: "JSONP",
+            complete: function () {
+              const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/seat?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+              fetch(uri)
+                .then(res => res.json())
+                .then(res => {
+                  const data = res.values;
+                  console.log(data)
+                  //if(data[0][0]!="#N/A") limit_vip= parseInt(data[0][0], 10);
+                  //if(data[0][3]!="#N/A") limit_a= parseInt(data[0][3], 10);
+                  //if(data[0][6]!="#N/A") limit_md203= parseInt(data[0][6], 10);
+
+                  if($('#seat-text').text() == "VIP" && data[0][0]!="#N/A"){
+                    limit_vip= parseInt(data[0][0], 10);
+                    let purchaseSuccess = false;
+                    for(let i=2; i<=limit_vip+1; i++){
+                      if($('#email-phone-text').text()==data[i][1]){ //成功買到
+                        alert(" 購票成功！請注意查收電子票券！ ");
+                        //完成後把這些欄位清空
+                        $('#quantity').val('');
+                        purchaseSuccess = true;
+                        //最後跳轉到主頁面
+                        window.location.replace("index.html");
+                      }
+                    }
+                    if (!purchaseSuccess) {  // 如果沒有成功購票，顯示庫存不足
+                      alert("門票庫存數量不足，感謝您的支持！");
+                      $('#quantity').val('');  // 清空欄位
+                      isSubmitting = false;  // 解鎖
+                      //window.location.replace("index.html");
+                    }
+                  }
+                  else if($('#seat-text').text() == "VIP" && data[0][0]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
+
+                  if($('#seat-text').text() == "A" && data[0][3]!="#N/A"){
+                    limit_a= parseInt(data[0][3], 10);
+                    for(let i=2; i<=limit_a+1; i++){
+                      if($('#email-phone-text').text()==data[i][4]){ //成功買到
+                        alert(" 購票成功！請注意查收電子票券！ ");
+                        //完成後把這些欄位清空
+                        $('#quantity').val('');
+                        //最後跳轉到主頁面
+                        window.location.replace("index.html");
+                      }
+                    }
+                    alert(" 門票庫存數量不足，感謝您的支持！ ");
+                    $('#quantity').val('');
+                    isSubmitting = false; // 解鎖
+                    //window.location.replace("index.html");
+                  }
+                  else if($('#seat-text').text() == "A" && data[0][3]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
+
+                  if($('#seat-text').text() == "MD203" && data[0][6]!="#N/A"){
+                    limit_md203= parseInt(data[0][6], 10);
+                    for(let i=2; i<=limit_md203+1; i++){
+                      if($('#email-phone-text').text()==data[i][7]){ //成功買到
+                        alert(" 購票成功！請注意查收電子票券！ ");
+                        //完成後把這些欄位清空
+                        $('#quantity').val('');
+                        //最後跳轉到主頁面
+                        window.location.replace("index.html");
+                      }
+                    }
+                    alert(" 門票庫存數量不足，感謝您的支持！ ");
+                    $('#quantity').val('');
+                    isSubmitting = false; // 解鎖
+                    //window.location.replace("index.html");
+                  }
+                  else if($('#seat-text').text() == "MD203" && data[0][6]=="#N/A"){
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
+
+                  /*
+                  if (($('#seat-text').text() == "VIP" && limit_vip < $('#quantity').val()) || ($('#seat-text').text() == "A" && limit_a < $('#quantity').val()) || ($('#seat-text').text() == "MD203" && limit_md203 < $('#quantity').val())) {
+                    alert(" 門票庫存數量不足，感謝您的支持！ ");
+                    $('#quantity').val('');
+                    isSubmitting = false; // 解鎖
+                    //window.location.replace("index.html");
+                  }
+                  else {
+                    alert(" 購票成功！請注意查收電子票券！ ");
+                    //完成後把這些欄位清空
+                    $('#quantity').val('');
+                    //最後跳轉到主頁面
+                    window.location.replace("index.html");
+                  }
+                  */
+                });
+            }
+          });
+        }
+      //});
+  }
+
+  function checkLimitAndSubmit() {
+    const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
+    
+    fetch(uri)
+      .then(res => res.json())
+      .then(res => {
+        const data = res.values;
+        limit_vip= parseInt(data[1][1], 10);
+        limit_a= parseInt(data[1][2], 10);
+        limit_md203= parseInt(data[1][3], 10);
+
+        if (($('#seat-text').text() == "VIP" && limit_vip < $('#quantity').val()) || ($('#seat-text').text() == "A" && limit_a < $('#quantity').val()) || ($('#seat-text').text() == "MD203" && limit_md203 < $('#quantity').val())) {
+            alert(" 門票已售罄，感謝您的支持！ ");
+            $('#content-text').val('');
+            isSubmitting = false; // 解鎖
+            //window.location.replace("seat.html");
+        } else {
+            submitBtn();
+        }
+      })
+      .catch(error => {
+        console.error("訂單錯誤：", error);
+        isSubmitting = false; // 如果發生錯誤，也解鎖
+      });
+}
+
+  $(".submit").on('click', function(e) {
+    //擋掉form默認事件，為了先檢查
+    e.preventDefault();
+
+    if (isSubmitting) {
+        alert("請稍後，正在確認您的訂單...");
+        return; // 如果已經在提交狀態，不允許重複提交
+    }
+
+    isSubmitting = true; // 加鎖
+    checkLimitAndSubmit(); // 調用檢查和提交函數
+  });
+  
+</script>
+</html>
