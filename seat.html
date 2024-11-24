@@ -135,8 +135,8 @@
             if (selectedArea) {
                 const confirmMessage = `你所選的是${selectedArea}，是否確認座位？`;
                 if (confirm(confirmMessage)) {
-                    const seat = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
-                    window.location.href = 'check.html';
+                    const check = `check.html?selectedArea=${encodeURIComponent(selectedArea)}`;
+                    window.location.href = check;
                 }
             } else {
                 alert('請先選擇一個區域！');
