@@ -16,6 +16,11 @@
             background-color: #f9f9f9;
         }
 
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* 讓主內容區域填滿多餘空間 */
+        }
         /* 頂部選單 */
         nav {
             background-color: #333;
@@ -170,7 +175,7 @@
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
     </nav>
-
+<main>
     <!-- 主內容區域 -->
     <div class="main-content">
         <!-- 座位圖區域 -->
@@ -238,7 +243,7 @@
         const soldOutButton = document.querySelector('.details-btns');
         soldOutButton.addEventListener('click', showModal);
     </script>
-
+</main>
     <!-- 版權區域 -->
     <div class="footer">
         © 2024 泰克希特購票系統
