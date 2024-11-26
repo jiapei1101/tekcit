@@ -14,6 +14,11 @@
             background-size: cover;
             background-position: center;
         }
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* 讓主內容區域填滿多餘空間 */
+        }
         nav {
             background-color: #333;
             overflow: hidden;
@@ -158,6 +163,7 @@
     </nav>
 
     <!-- 登入介面 -->
+<main>
     <div class="login-container">
         <h2>登入帳號</h2>
         <div class="login-options">
@@ -179,6 +185,7 @@
         </div>
         <div id="message" class="message"></div>
     </div>
+</main>
 
     <script>
       // 登入功能
