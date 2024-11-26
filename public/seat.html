@@ -250,15 +250,10 @@
         logoutBtn.addEventListener('click', function() {
             var isLoggedIn = localStorage.getItem('userLoggedIn');
             
-            // 如果用戶已登入
             if (isLoggedIn === 'true') {
-                // 清除登入狀態
                 localStorage.removeItem('userLoggedIn');
-                
-                // 跳轉到登入頁面
                 window.location.replace('login.html');
             } else {
-                // 如果用戶未登入，提示訊息
                 alert('請先登入！');
             }
         });
