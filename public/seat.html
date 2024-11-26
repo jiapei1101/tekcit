@@ -227,12 +227,6 @@
                 alert('請先選擇一個區域！');
             }
         }
-         window.onload = function() {
-            console.log('接收到的 Email 或手機號碼：', emailPhone);
-         $('#email-phone-text').text(emailPhone); 
-            const userAvatar = 'https://via.placeholder.com/40'; // 頭像預設圖片
-            document.getElementById('userAvatar').src = userAvatar;
-        };
 
         function showModal() {
             document.getElementById('modal').style.display = 'block';
