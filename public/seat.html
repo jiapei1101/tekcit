@@ -40,6 +40,31 @@
         nav a:hover {
             background-color: #575757;
         }
+        .logout-btn {
+          background-color: #333;
+            cursor: pointer;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            color: white;
+    transition: background-color 0.3s, transform 0.3s ease-in-out;
+        }
+
+        .logout-btn i {
+            margin-right: 8px;
+            font-size: 20px;
+        }
+        
+        .logout-btn:hover {
+            transform: scale(1.1); 
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .logout-btn span {
+            font-size: 16px;
+        }
 
         /* 主內容 */
         .main-content {
@@ -177,7 +202,10 @@
         <a href="concert-poster.html">演唱會資訊</a>
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
-        <button id="logoutBtn">登出</button>
+         <button class="logout-btn" id="logoutBtn">
+        <i class="bx bx-log-out"></i> 
+        <span>登出</span>
+        </button>
     </nav>
 <main>
     <!-- 主內容區域 -->
