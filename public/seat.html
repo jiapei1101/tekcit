@@ -177,6 +177,7 @@
         <a href="concert-poster.html">演唱會資訊</a>
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
+        <button id="logoutBtn">登出</button>
     </nav>
 <main>
     <!-- 主內容區域 -->
@@ -246,6 +247,32 @@
         // 綁定地底通道按鈕事件
         const soldOutButton = document.querySelector('.details-btns');
         soldOutButton.addEventListener('click', showModal);
+
+        document.addEventListener('DOMContentLoaded', function() {
+    var logoutBtn = document.getElementById('logoutBtn');
+    
+    // 確認 logoutBtn 是否存在
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', function() {
+            var isLoggedIn = localStorage.getItem('userLoggedIn');
+            
+            // 如果用戶已登入
+            if (isLoggedIn === 'true') {
+                // 清除登入狀態
+                localStorage.removeItem('userLoggedIn');
+                
+                // 跳轉到登入頁面
+                window.location.replace('login.html');
+            } else {
+                // 如果用戶未登入，提示訊息
+                alert('請先登入！');
+            }
+        });
+    } else {
+        console.error('logoutBtn 按鈕不存在');
+    }
+});
+
     </script>
 
     <!-- 版權區域 -->
