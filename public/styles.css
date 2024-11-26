@@ -13,7 +13,7 @@ main {
     display: flex;
     flex-direction: column;
     flex: 1; /* 讓主內容區域填滿多餘空間 */
-}
+} 
 header {
     text-align: center;
     margin-bottom: 20px;
