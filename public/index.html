@@ -16,6 +16,11 @@
             flex-direction: column;
             min-height: 100vh;
         }
+        main {
+            display: flex;
+            flex-direction: column;
+            flex: 1; /* 讓主內容區域填滿多餘空間 */
+        } 
         /* 頂部選單 */
         nav {
             background-color: #333;
@@ -207,7 +212,7 @@
           <a href="#eventSection" class = "link">查看相關資訊</a>
         </div>
     </div>
-
+<main>
     <!-- 場次資訊 -->
     <div class="event-info" id="eventSection">
         <h2>場次資訊</h2>
@@ -259,7 +264,7 @@
         <button onclick="closeModal()">確定</button>
     </div>
     <div id="overlay"></div>
-
+</main>
     <script>
         // 顯示模態視窗的函式
         function showModal() {
