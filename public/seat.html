@@ -30,6 +30,11 @@
             overflow: hidden;
             text-align: center;
         }
+        nav {
+            background-color: #333;
+            overflow: hidden;
+            text-align: center;
+        }
         nav a {
             display: inline-block;
             color: white;
@@ -41,30 +46,36 @@
             background-color: #575757;
         }
         .logout-btn {
-          background-color: #333;
+            display: inline-block;
+            color: white;
+            padding: 20px 15px;
+            text-decoration: none;
+            border-radius: 10px;
+            border: 2px solid #333; /* 增加邊框 */
+            box-shadow:0 6px 10px rgba(0, 0, 0, 0.6);
             cursor: pointer;
-            padding: 15px 20px;
-            display: flex;
             align-items: center;
             justify-content: center;
             margin-left: auto;
-            color: white;
-    transition: background-color 0.3s, transform 0.3s ease-in-out;
-        }
+            background-color: #333; /* 使登出按鈕背景與選單項目一致 */
+            transition: background-color 0.3s, transform 0.3s ease-in-out;
+         }
 
-        .logout-btn i {
-            margin-right: 8px;
-            font-size: 20px;
-        }
-        
-        .logout-btn:hover {
-            transform: scale(1.1); 
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-        }
+         .logout-btn:hover {
+            transform: translateY(-3px); /* 當滑鼠懸停時，上移3px，增加浮凸感 */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); 
+          }
 
-        .logout-btn span {
-            font-size: 16px;
-        }
+          .logout-btn {
+             display: inline-flex; /* inline-flex 使其與其他 a 元素保持一致 */
+             align-items: center;
+             cursor: pointer;
+          }
+
+           .logout-btn i {
+             margin-right: 8px;
+             font-size: 25px;
+           }
 
         /* 主內容 */
         .main-content {
