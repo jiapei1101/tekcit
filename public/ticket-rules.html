@@ -143,6 +143,28 @@
         </ul>
     </div>
 </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var logoutBtn = document.getElementById('logoutBtn');
+    
+    // 確認 logoutBtn 是否存在
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                var isLoggedIn = localStorage.getItem('userLoggedIn');
+            
+                if (isLoggedIn === 'true') {
+                    localStorage.removeItem('userLoggedIn');
+                    window.location.replace('LogIn.html');
+                } else {
+                    alert('請先登入！');
+                    window.location.href = 'LogIn.html';
+                }
+            });
+        }else {
+            console.error('logoutBtn 按鈕不存在');
+        }
+        });
+    </script>
     <div class="footer">
         © 2024 泰克希特購票系統
     </div>
