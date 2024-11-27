@@ -193,6 +193,8 @@
             color: black;
         }
     </style>
+    <link rel="stylesheet"
+    href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"> 
 </head>
 <body>
 
@@ -202,6 +204,10 @@
         <a href="concert-poster.html">演唱會資訊</a>
         <a href="ticket-rules.html">購票說明</a>
         <a href="LogIn.html">登入</a>
+        <button class="logout-btn" id="logoutBtn">
+        <i class="bx bx-log-out"></i> 
+        <span>登出</span>
+        </button>
     </nav>
 
     <!-- 歡迎區域 -->
@@ -282,6 +288,27 @@
         const soldOutButtons = document.querySelectorAll('.details-btns');
         soldOutButtons.forEach(button => {
             button.addEventListener('click', showModal);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+        var logoutBtn = document.getElementById('logoutBtn');
+    
+    // 確認 logoutBtn 是否存在
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', function() {
+                var isLoggedIn = localStorage.getItem('userLoggedIn');
+            
+                if (isLoggedIn === 'true') {
+                    localStorage.removeItem('userLoggedIn');
+                    window.location.replace('LogIn.html');
+                } else {
+                    alert('請先登入！');
+                    window.location.href = 'LogIn.html';
+                }
+            });
+        }else {
+            console.error('logoutBtn 按鈕不存在');
+        }
         });
 
         
