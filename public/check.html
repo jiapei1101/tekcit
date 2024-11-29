@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
+<html lang="zh-Hant"><head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="check-styles.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +29,7 @@
       <form id="google-form" class="form">
         <div class="email-phone">
           <label>Email/手機號碼：</label>
-          <label id="email-phone-text"></label>
+          <label id="email-phone-text">0000000000</label>
         </div>
         
         <div class="sel">
@@ -41,14 +39,18 @@
           </div>
           <div class="sel-quantity">
             <select id="quantity">
-              <option value="" selected disabled>請選擇購買張數</option>
+              <option value="" selected="" disabled="">請選擇購買張數</option>
               <option value="1" id="opt1">1</option>
-              <option value="2" id="opt2">2</option>
-              <option value="3" id="opt3">3</option>
-              <option value="4" id="opt4">4</option>
+              <option value="2" id="opt2" disabled="">2</option>
+              <option value="3" id="opt3" disabled="">3</option>
+              <option value="4" id="opt4" disabled="">4</option>
             </select>
           </div>
         </div>
+
+        <div class="checkbox">
+<input type="checkbox" id="check-box" class="" name="" value="1">         
+<label for="check-box">我已詳細閱讀且同意<a href="ticket-rules.html" target="blank" class="rule-link">購票說明</a>及節目資訊公告，並同意放棄契約審閱期，且授權貴公司於條款目的範圍內，進行本人之個人資料蒐集、處理及利用。</label>                        </div>
         
         <div class="submit-w">
           <button class="submit"> 送出 </button>
@@ -61,7 +63,7 @@
   <div class="footer">
     © 2024 泰克希特購票系統
   </div>
-</body>
+
   
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
@@ -227,7 +229,11 @@
 
   function checkLimitAndSubmit() {
     const uri = 'https://sheets.googleapis.com/v4/spreadsheets/1khoGwV0VoqbN5EHHHdPxqNHtYYhYoMWmvnkZ7sgOZ70/values/status?alt=json&key=AIzaSyBgdXDH29MGCtTFncLvBHFnew91ZMo4keA';
-    
+
+    if(!$("#check-box")){
+        alert("請閱讀購票守則");
+    }
+      
     fetch(uri)
       .then(res => res.json())
       .then(res => {
@@ -255,14 +261,20 @@
     //擋掉form默認事件，為了先檢查
     e.preventDefault();
 
-    if (isSubmitting) {
-        alert("請稍後，正在確認您的訂單...");
-        return; // 如果已經在提交狀態，不允許重複提交
+    if (!$("#check-box").is(":checked")) {
+      alert("請閱讀購票說明");
     }
+    else{
+      if (isSubmitting) {
+          alert("請稍後，正在確認您的訂單...");
+          return; // 如果已經在提交狀態，不允許重複提交
+      }
 
-    isSubmitting = true; // 加鎖
-    checkLimitAndSubmit(); // 調用檢查和提交函數
+      isSubmitting = true; // 加鎖
+      checkLimitAndSubmit(); // 調用檢查和提交函數
+    }
   });
   
 </script>
-</html>
+
+</body></html>
