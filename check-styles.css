@@ -39,7 +39,7 @@ nav a:hover {
     background-color: #e9e7ea;
     margin: 20px auto;
     width: 80vw;
-    height: 20vh;
+    height: 30vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -119,6 +119,24 @@ nav a:hover {
     width: 100%;
     border: 1px solid #1e1e1e96;
 }
+.checkbox{
+    margin: 10px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    width:100%;
+    justify-content: center;
+    text-align: left;
+}
+#check-box{
+    width: 5%;
+}
+.checkbox label{
+    width: 75%;
+}
+.rule-link{
+    color: blue;
+}
 .submit-w{
     margin: 30px;
     width: 10%;
@@ -148,4 +166,10 @@ nav a:hover {
 }
 .link:hover {
     color: white;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+     text-decoration: none;
 }
