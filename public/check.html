@@ -261,8 +261,9 @@
     //擋掉form默認事件，為了先檢查
     e.preventDefault();
 
-    if (!$("#check-box").is(":checked")) {
-      alert("請閱讀購票說明");
+    if (!($("#check-box").is(":checked"))||!($('#quantity').val())) {
+      if (!$("#check-box").is(":checked")) alert(" 請詳閱購票說明！ ");
+      else if(!($('#quantity').val())) alert(" 請選擇購買張數！ ");
     }
     else{
       if (isSubmitting) {
