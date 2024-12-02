@@ -90,16 +90,6 @@
 .share-buttons a:hover {
     background-color: #0056b3;
 }
-
-/* 用戶評論區 */
-.comments-section {
-    margin-top: 30px;
-}
-
-.comments-section h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
     /* FAQ 區域 */
 .faq {
     margin-top: 30px;
@@ -197,6 +187,31 @@ form button:hover {
             <button class="buy-button"><a href="javascript:void(0);" class="link" onclick="checkLoginStatus(event)">立即購票</a>
             </button>
         </div>
+        <!-- 分享按鈕 -->
+        <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">分享至 Facebook</a>
+            <a href="https://twitter.com/share?url=https://example.com&amp;text=快來搶票！" target="_blank">分享至 Twitter</a>
+        </div>
+
+        <!-- 用戶評論區 -->
+        <section class="comments-section">
+            <h3>用戶評論</h3>
+            <textarea id="comment" placeholder="留下您的評論..."></textarea>
+            <button onclick="addComment()">提交</button>
+            <ul id="comment-list"></ul>
+        </section>
+
+        <!-- FAQ 區域 -->
+        <section class="faq">
+            <h3>常見問題</h3>
+            <details>
+                <summary>如何購票？</summary>
+                <p>請先登入，點擊「立即購票」按鈕即可購買。</p>
+            </details>
+            <details>
+                <summary>可以退票嗎？</summary>
+                <p>售出後恕不退票。</p>
+            </details>
     </main>
         <!-- 分享按鈕 -->
         <div class="share-buttons">
