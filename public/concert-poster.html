@@ -75,6 +75,75 @@
              margin-right: 8px;
              font-size: 25px;
            }
+            /* 分享按鈕樣式 */
+.share-buttons a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.share-buttons a:hover {
+    background-color: #0056b3;
+}
+
+/* 用戶評論區 */
+.comments-section {
+    margin-top: 30px;
+}
+
+.comments-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+    /* FAQ 區域 */
+.faq {
+    margin-top: 30px;
+}
+
+.faq details {
+    margin-bottom: 10px;
+}
+
+.faq summary {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.faq p {
+    font-size: 14px;
+    margin-left: 20px;
+}
+    /* 表單樣式 */
+form {
+    margin-top: 20px;
+}
+
+form input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
   </style>
 </head>
     <body class="poster-page">
@@ -129,6 +198,31 @@
             </button>
         </div>
     </main>
+        <!-- 分享按鈕 -->
+        <div class="share-buttons">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://example.com" target="_blank">分享至 Facebook</a>
+            <a href="https://twitter.com/share?url=https://example.com&amp;text=快來搶票！" target="_blank">分享至 Twitter</a>
+        </div>
+
+        <!-- 用戶評論區 -->
+        <section class="comments-section">
+            <h3>用戶評論</h3>
+            <textarea id="comment" placeholder="留下您的評論..."></textarea>
+            <button onclick="addComment()">提交</button>
+            <ul id="comment-list"></ul>
+        </section>
+
+        <!-- FAQ 區域 -->
+        <section class="faq">
+            <h3>常見問題</h3>
+            <details>
+                <summary>如何購票？</summary>
+                <p>請先登入，點擊「立即購票」按鈕即可購買。</p>
+            </details>
+            <details>
+                <summary>可以退票嗎？</summary>
+                <p>售出後恕不退票。</p>
+            </details>
     <!-- 版權區域 -->
     <div class="footer">
         © 2024 泰克希特購票系統
